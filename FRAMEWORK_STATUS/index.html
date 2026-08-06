@@ -1,0 +1,1484 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Compile written source corpora into structured, source-traceable agent skills.">
+      
+      
+      
+        <link rel="canonical" href="https://nicholasswhite.github.io/corpus-to-skill/FRAMEWORK_STATUS/">
+      
+      
+        <link rel="prev" href="../CORPUS_WORKFLOW/">
+      
+      
+        <link rel="next" href="../COMPATIBILITY/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Framework status & operations - Corpus to Skill</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#framework-status-compatibility-and-operations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Corpus to Skill" class="md-header__button md-logo" aria-label="Corpus to Skill" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Corpus to Skill
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Framework status & operations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nicholasswhite/corpus-to-skill" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nicholasswhite/corpus-to-skill
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../guide/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Guide
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../HOW_IT_WORKS/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  How it works
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../USAGE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Usage
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../CORPUS_WORKFLOW/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Corpus workflow
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Framework status & operations
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../COMPATIBILITY/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Compatibility
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../INSTALL/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Install
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../FAQ/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ARCHITECTURE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Architecture
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PERFORMANCE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Performance
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../skill-reference/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Skill Reference
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Corpus to Skill" class="md-nav__button md-logo" aria-label="Corpus to Skill" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Corpus to Skill
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nicholasswhite/corpus-to-skill" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nicholasswhite/corpus-to-skill
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HOW_IT_WORKS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../USAGE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CORPUS_WORKFLOW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Corpus workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Framework status & operations
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Framework status & operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#feature-stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feature stability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema-v1-compatibility-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema v1 compatibility contract
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Schema v1 compatibility contract">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Change rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-second-schema-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding a second schema version
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resource-and-cost-budget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resource and cost budget
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-checkpoints-and-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI checkpoints and recovery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cache-pruning-and-output-rotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cache pruning and output rotation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opt-in-live-and-performance-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opt-in live and performance tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../COMPATIBILITY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compatibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PERFORMANCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#feature-stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feature stability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema-v1-compatibility-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema v1 compatibility contract
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Schema v1 compatibility contract">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Change rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-second-schema-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding a second schema version
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resource-and-cost-budget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resource and cost budget
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-checkpoints-and-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI checkpoints and recovery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cache-pruning-and-output-rotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cache pruning and output rotation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opt-in-live-and-performance-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opt-in live and performance tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="framework-status-compatibility-and-operations">Framework status, compatibility, and operations<a class="headerlink" href="#framework-status-compatibility-and-operations" title="Permanent link">&para;</a></h1>
+<p>This page records the support boundary for the additive corpus workflow and the
+domain-neutral <code>claim_framework</code>. It complements the <a href="../CORPUS_WORKFLOW/">corpus workflow</a>
+and the <a href="../COMPATIBILITY/">compatibility contract</a>.</p>
+<h2 id="feature-stability">Feature stability<a class="headerlink" href="#feature-stability" title="Permanent link">&para;</a></h2>
+<p>The labels below describe the current repository contract. They do not imply
+that an unreleased API has been published as a separate package.</p>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stable / protected</strong></td>
+<td>Compatibility tests guard the public behavior. A breaking change requires explicit approval and a migration or compatibility plan.</td>
+</tr>
+<tr>
+<td><strong>Supported</strong></td>
+<td>Implemented, documented, and covered by the normal offline suite within the stated v1 scope. Additive evolution is expected.</td>
+</tr>
+<tr>
+<td><strong>Experimental</strong></td>
+<td>Implemented and tested, but the API or policy may change before it is promoted. Persisted records remain subject to the schema rules below.</td>
+</tr>
+<tr>
+<td><strong>Scaffolded</strong></td>
+<td>A contract, protocol, or documented boundary exists, but no complete operational adapter or workflow is promised.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Status</th>
+<th>Current boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/corpus-to-skill</code> host-agent workflow</td>
+<td><strong>Stable within its specification</strong></td>
+<td>The root <code>SKILL.md</code> defines document analysis, generation, update/fold-in, quality, and cleanup behavior across compatible hosts.</td>
+</tr>
+<tr>
+<td>Inherited <code>book-to-skill</code> extraction CLI and <code>book_to_skill</code> API</td>
+<td><strong>Stable / protected</strong></td>
+<td>Existing inputs, defaults, public imports, exit behavior, and artifact locations are characterized in <code>tests/test_legacy_contract.py</code>.</td>
+</tr>
+<tr>
+<td>Persisted <code>claim_framework</code> schema v1 and canonical JSON</td>
+<td><strong>Supported</strong></td>
+<td>Readers accept exactly schema <code>1.0</code>, reject unknown fields, and are guarded by a golden record for every registered persisted type.</td>
+</tr>
+<tr>
+<td>Local <code>ClaimStore</code>, source spans, provenance resolution, normalization, relations, and synthesis</td>
+<td><strong>Supported</strong></td>
+<td>Domain-neutral, deterministic local APIs; heuristic relation labels still require review for consequential use.</td>
+</tr>
+<tr>
+<td><code>corpus-to-skill</code> text/Markdown-family workflow</td>
+<td><strong>Supported MVP</strong></td>
+<td>Two or more local relative sources, exact offsets into sanitized extracted text, deterministic offline extraction, and a separate output tree.</td>
+</tr>
+<tr>
+<td>Evaluation rubrics and synthesis evaluation adapter</td>
+<td><strong>Supported</strong></td>
+<td>Versioned dimensions, explicit missing states, and transparent optional aggregation; no universal truth or evidence score.</td>
+</tr>
+<tr>
+<td>Predictive registration, outcomes, scoring, and aggregation</td>
+<td><strong>Experimental</strong></td>
+<td>Prospective synthetic/external records only. No historical performance is claimed, and no live outcome resolver ships.</td>
+</tr>
+<tr>
+<td><code>DomainAdapter</code>, <code>ClaimExtractor</code>, and <code>PredictivePowerPort</code> extension protocols</td>
+<td><strong>Scaffolded</strong></td>
+<td>Extension seams exist, but the corpus CLI does not resolve <code>domain_profile</code> to a trusted executable adapter.</td>
+</tr>
+<tr>
+<td>Rich-document and authorized-URI corpus adapters</td>
+<td><strong>Scaffolded</strong></td>
+<td>PDF, EPUB, DOCX, HTML, RTF, and URI ingestion do not yet provide the exact-offset corpus contract.</td>
+</tr>
+<tr>
+<td>Recovery checkpoints and selective cache pruning</td>
+<td><strong>Supported</strong></td>
+<td>Builds record the last durable stage and completed source IDs. <code>build --prune-cache</code> removes only previously declared, checksum-matching generated cache files; later reasoning stages still rerun.</td>
+</tr>
+<tr>
+<td>Schema migration CLI and downstream-result caching</td>
+<td><strong>Scaffolded</strong></td>
+<td>Schema v1 needs no migration yet. There is no separate <code>resume</code> or <code>migrate</code> subcommand, and normalization through compilation reruns.</td>
+</tr>
+<tr>
+<td>Live/model integrations and performance benchmarks</td>
+<td><strong>Scaffolded</strong></td>
+<td>Pytest opt-in gates exist. The repository currently supplies only a gate-characterization fixture, not a live provider adapter or a release benchmark.</td>
+</tr>
+<tr>
+<td>Separate publication of <code>claim_framework</code></td>
+<td><strong>Scaffolded</strong></td>
+<td>It ships in the retained <code>book-to-skill</code> distribution without book/parser imports. Cross-repository extraction or publication needs separate approval.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="schema-v1-compatibility-contract">Schema v1 compatibility contract<a class="headerlink" href="#schema-v1-compatibility-contract" title="Permanent link">&para;</a></h2>
+<p><code>schema_version</code> is the persisted data version, not the Python package version.
+All registered top-level records currently write <code>"1.0"</code>. The reader fails closed
+when the version is missing or unsupported, or when an object has unknown fields.
+It does not silently reinterpret a newer record as v1.</p>
+<p>The static fixture at <code>tests/fixtures/schema_v1/records.json</code> contains one complete
+example for every class in <code>claim_framework.records.PERSISTED_RECORD_TYPES</code>.
+<code>tests/test_schema_compatibility.py</code> enforces both directions of the contract:</p>
+<ol>
+<li>the fixture type names must exactly equal the runtime registry, so adding or
+   removing a persisted type cannot bypass compatibility review; and</li>
+<li>every v1 object must load, convert back to the same plain value, produce the
+   same canonical JSON, and load again as an equal record.</li>
+</ol>
+<p>Treat the v1 fixture as an immutable compatibility artifact. Correcting a typo
+in descriptive fixture text is fine only when it does not conceal a persisted
+shape or semantic change.</p>
+<h3 id="change-rules">Change rules<a class="headerlink" href="#change-rules" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Internal implementation changes that leave the persisted shape and meaning
+  unchanged do not require a schema bump.</li>
+<li>Renaming or deleting a field, changing a field's type or meaning, changing a
+  required value, or changing canonical interpretation requires a new schema
+  version.</li>
+<li>Do not change existing v1 artifacts in place. Writers for a new version must
+  emit new files or a new output tree.</li>
+<li>Keep v1 readable until a documented support decision explicitly retires it.</li>
+<li>Preserve source checksums, locators, source-claim membership, evidence links,
+  dissent, human-review lineage, and run lineage across any migration. If a
+  value cannot be preserved, record that limitation instead of guessing.</li>
+</ul>
+<h3 id="adding-a-second-schema-version">Adding a second schema version<a class="headerlink" href="#adding-a-second-schema-version" title="Permanent link">&para;</a></h3>
+<p>Before a v2 writer becomes the default:</p>
+<ol>
+<li>add a complete <code>tests/fixtures/schema_v2/</code> golden set while leaving the v1
+   fixture unchanged;</li>
+<li>keep a version-dispatched v1 decoder, or add a deterministic v1-to-v2
+   migration that never overwrites its input;</li>
+<li>add tests that load supported historical versions and verify every preserved
+   provenance and review field;</li>
+<li>document the exact command/API, destination, rollback procedure, and any
+   lossy fields; and</li>
+<li>make the new writer opt-in until backward-read and migration tests are green.</li>
+</ol>
+<p>There is no migration command today because <code>1.0</code> is the only supported schema.
+If a reader reports an unknown version, stop: preserve the artifact, use a tool
+version that supports it, or wait for an explicit migration. Do not edit the
+<code>schema_version</code> string by hand.</p>
+<h2 id="resource-and-cost-budget">Resource and cost budget<a class="headerlink" href="#resource-and-cost-budget" title="Permanent link">&para;</a></h2>
+<p>The v1 corpus path is deterministic and offline, but relationship candidate work
+can grow roughly with the square of the active canonical-claim count. Builds
+enforce the following default hard limits before proceeding and record both the
+selected budget and actual usage in <code>artifacts/cache-state.json</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>v1 budget</th>
+<th>Action when the budget is exceeded</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network/model cost for normal builds and tests</td>
+<td><strong>Exactly 0 calls and $0</strong></td>
+<td>The built-in budget rejects any nonzero model-call allowance. Treat a proposed network/model adapter as separately reviewed live work.</td>
+</tr>
+<tr>
+<td>Declared source count</td>
+<td><strong>1,000 maximum</strong></td>
+<td>Lower with <code>--max-sources</code>; raise deliberately only after assessing candidate-pair and storage growth. The manifest still requires at least two sources.</td>
+</tr>
+<tr>
+<td>Raw local source bytes</td>
+<td><strong>50 MiB per source; 500 MiB total</strong></td>
+<td>Adjust with <code>--max-source-bytes</code> and <code>--max-total-source-bytes</code>. Limits are checked before hashing and again against ingested bytes.</td>
+</tr>
+<tr>
+<td>Extracted source claims</td>
+<td><strong>100,000 maximum</strong></td>
+<td>Adjust with <code>--max-claims</code>; partition a large corpus or add a measured retrieval/index strategy before raising it.</td>
+</tr>
+</tbody>
+</table>
+<p>The defaults are denial-of-service guardrails, not performance guarantees or
+benchmark results. The Python API can construct an explicit budget with a
+different positive limit (or <code>None</code> for a deliberately uncapped local resource),
+but it can never authorize model calls. Record machine, corpus size, claim count,
+elapsed time, peak memory, output bytes, and version when adding a representative
+benchmark; mark it <code>performance</code> so it remains opt-in.</p>
+<h2 id="cli-checkpoints-and-recovery">CLI checkpoints and recovery<a class="headerlink" href="#cli-checkpoints-and-recovery" title="Permanent link">&para;</a></h2>
+<p>The available commands are:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>corpus-to-skill<span class="w"> </span>validate<span class="w"> </span>corpus/manifest.json
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>corpus-to-skill<span class="w"> </span>build<span class="w"> </span>corpus/manifest.json<span class="w"> </span>--output<span class="w"> </span>corpus-build
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>corpus-to-skill<span class="w"> </span>build<span class="w"> </span>corpus/manifest.json<span class="w"> </span>--output<span class="w"> </span>corpus-build<span class="w"> </span>--force
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>corpus-to-skill<span class="w"> </span>build<span class="w"> </span>corpus/manifest.json<span class="w"> </span>--output<span class="w"> </span>corpus-build<span class="w"> </span>--prune-cache
+</code></pre></div>
+<p><code>validate</code> is a read-only manifest-contract checkpoint. It does not read source
+files. <code>build</code> runs ingestion through compilation. Re-running the same command is
+the current resume operation; there is no separate <code>resume</code> flag. <code>--force</code>
+bypasses source-claim cache reads, but it is not a cleanup command and does not
+make the whole build transactional.</p>
+<p>Checkpoint behavior is deliberately inspectable but not a whole-directory
+transaction:</p>
+<ul>
+<li>the corpus ownership marker is written before later stages;</li>
+<li><code>artifacts/recovery-checkpoint.json</code> records <code>in_progress</code> plus the last
+  completed stage and completed source-record IDs, then <code>completed</code> after a
+  successful compile and cache-state write;</li>
+<li>sanitized extracted text and content-addressed source-claim caches are written
+  per source and can be reused after interruption;</li>
+<li>normalization, relation classification, synthesis, and compilation rerun; and</li>
+<li>the skill <code>build-manifest.json</code> is written last and is the successful compiler
+  commit marker.</li>
+</ul>
+<p>After a failed or interrupted build:</p>
+<ol>
+<li>Preserve the output directory for diagnosis. Do not publish it merely because
+   an older <code>build-manifest.json</code> is present.</li>
+<li>Correct the scoped input or configuration error and rerun the exact <code>build</code>
+   command. Use <code>--force</code> when a valid-looking source-claim cache is suspect.</li>
+<li>Require exit status 0 and a JSON summary with <code>"status": "completed"</code>.</li>
+<li>Verify that the current skill <code>build-manifest.json</code> names the intended corpus,
+   synthesis artifact, compiler version, and output checksums.</li>
+<li>If the ownership marker is corrupt or belongs to another corpus, do not edit
+   it in place. Build into a new empty output directory and retain the old one
+   until the new result is verified.</li>
+</ol>
+<p>Per-file writes are atomic, but the full output directory is not a transaction.
+A failed update can leave valid new intermediates beside the previous successful
+skill manifest. The offline suite injects an interruption after compiler writes
+and verifies that all source caches are reused on the successful rerun.</p>
+<h2 id="cache-pruning-and-output-rotation">Cache pruning and output rotation<a class="headerlink" href="#cache-pruning-and-output-rotation" title="Permanent link">&para;</a></h2>
+<p>There is no separate <code>prune</code> subcommand. Pruning is an opt-in post-success step:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>corpus-to-skill<span class="w"> </span>build<span class="w"> </span>corpus/manifest.json<span class="w"> </span>--output<span class="w"> </span>corpus-build<span class="w"> </span>--prune-cache
+</code></pre></div>
+<p>The compiler independently reconciles generated skill files declared by a prior
+manifest whose checksums still match. <code>--prune-cache</code> then considers obsolete
+content-addressed source caches and their extracted text. It deletes them only
+when the preceding <code>cache-state.json</code> declared their checksums, the current bytes
+still match, their records parse consistently, and no unknown file is present.
+Modified, corrupt, undeclared, symlinked, and user-owned paths are preserved and
+listed in the command summary/cache state.</p>
+<p>Fresh-output rotation remains the simplest option for a minimal publishable
+snapshot or when preserved paths need manual review:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>corpus-to-skill<span class="w"> </span>build<span class="w"> </span>corpus/manifest.json<span class="w"> </span>--output<span class="w"> </span>corpus-build-next
+</code></pre></div>
+<p>Verify <code>corpus-build-next</code> completely, then archive or retire the previous output
+as one unit according to local retention policy. Never manually prune while a
+build is running.</p>
+<h2 id="opt-in-live-and-performance-tests">Opt-in live and performance tests<a class="headerlink" href="#opt-in-live-and-performance-tests" title="Permanent link">&para;</a></h2>
+<p>The default suite must stay offline. Tests marked <code>live</code> or <code>performance</code> are
+skipped unless their corresponding opt-in flag is present. The marker selects a
+test category; the flag confirms authorization to run it:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Normal offline suite; live/performance tests remain skipped.</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>python<span class="w"> </span>-m<span class="w"> </span>pytest
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Select and authorize live/model tests.</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>-m<span class="w"> </span>live<span class="w"> </span>--run-live
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Select and authorize performance/resource-envelope tests.</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>-m<span class="w"> </span>performance<span class="w"> </span>--run-performance
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1"># Explicitly authorize both categories in a full run.</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>--run-live<span class="w"> </span>--run-performance
+</code></pre></div>
+<p>Before adding or running a real live test, document the provider, endpoint,
+credentials it expects, data that leaves the machine, estimated maximum cost,
+rate/timeout behavior, and cleanup. Use synthetic or public data and never print
+secrets. <code>--run-live</code> only lifts pytest's safety skip; it does not provide
+credentials or authorize an undocumented external side effect.</p>
+<p>The current opt-in sample only proves that both gates default to skipped and can
+be explicitly enabled. It does not contact a service or constitute a performance
+benchmark.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../CORPUS_WORKFLOW/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Corpus workflow">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Corpus workflow
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../COMPATIBILITY/" class="md-footer__link md-footer__link--next" aria-label="Next: Compatibility">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Compatibility
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.instant", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
