@@ -1,8 +1,8 @@
 site_name: Corpus to Skill
 site_description: Compile written source corpora into structured, source-traceable agent skills.
-site_url: https://nicholasswhite.github.io/book-to-skill/
-repo_url: https://github.com/nicholasswhite/book-to-skill
-repo_name: nicholasswhite/book-to-skill
+site_url: https://nicholasswhite.github.io/corpus-to-skill/
+repo_url: https://github.com/nicholasswhite/corpus-to-skill
+repo_name: nicholasswhite/corpus-to-skill
 edit_uri: ""
 
 # index.md is a committed landing page. Guide (README.md) and Skill Reference

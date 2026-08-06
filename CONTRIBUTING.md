@@ -19,7 +19,7 @@ generation higher-signal, or the docs clearer are all welcome.
 ## Development
 
 ```bash
-git clone https://github.com/nicholasswhite/book-to-skill.git corpus-to-skill
+git clone https://github.com/nicholasswhite/corpus-to-skill.git
 cd corpus-to-skill
 python3 -m venv .venv && . .venv/bin/activate
 pip install pytest ruff

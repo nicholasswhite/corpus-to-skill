@@ -9,7 +9,7 @@ The skill follows the open [Agent Skills](https://github.com/agentskills/agentsk
 **GitHub Copilot CLI** (personal skill):
 
 ```bash
-git clone https://github.com/nicholasswhite/book-to-skill.git ~/.copilot/skills/corpus-to-skill
+git clone https://github.com/nicholasswhite/corpus-to-skill.git ~/.copilot/skills/corpus-to-skill
 # then, in a `copilot` session:
 /skills reload
 /skills info corpus-to-skill
@@ -18,7 +18,7 @@ git clone https://github.com/nicholasswhite/book-to-skill.git ~/.copilot/skills/
 Or the cross-agent path that Copilot CLI and Amp both discover:
 
 ```bash
-git clone https://github.com/nicholasswhite/book-to-skill.git ~/.agents/skills/corpus-to-skill
+git clone https://github.com/nicholasswhite/corpus-to-skill.git ~/.agents/skills/corpus-to-skill
 ```
 
 **Claude Code**:
@@ -26,13 +26,13 @@ git clone https://github.com/nicholasswhite/book-to-skill.git ~/.agents/skills/c
 Copy this into your Claude Code session:
 
 ```
-Install corpus-to-skill: https://raw.githubusercontent.com/nicholasswhite/book-to-skill/master/SKILL.md
+Install corpus-to-skill: https://raw.githubusercontent.com/nicholasswhite/corpus-to-skill/master/SKILL.md
 ```
 
 Or manually using standard `git clone` (ensures modular engine files are fetched correctly):
 
 ```bash
-git clone https://github.com/nicholasswhite/book-to-skill.git ~/.claude/skills/corpus-to-skill
+git clone https://github.com/nicholasswhite/corpus-to-skill.git ~/.claude/skills/corpus-to-skill
 ```
 
 Then in any agent session:

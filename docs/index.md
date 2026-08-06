@@ -12,13 +12,13 @@ Turn a document or deliberately assembled body of writing into a structured, on-
 
 [Get started](guide.md){ .md-button .md-button--primary }
 [Skill reference](skill-reference.md){ .md-button }
-[GitHub](https://github.com/nicholasswhite/book-to-skill){ .md-button }
+[GitHub](https://github.com/nicholasswhite/corpus-to-skill){ .md-button }
 
 !!! note "Lineage"
     Corpus to Skill is an independently maintained derivative of
     [Virgilio Junior's original `book-to-skill`](https://github.com/virgiliojr94/book-to-skill).
-    The repository and Python distribution retain legacy locators for a safe
-    migration; the product and root Agent Skill are Corpus to Skill.
+    The Python distribution retains its legacy identifier for safe upgrades;
+    the repository, product, and root Agent Skill are Corpus to Skill.
 
 ---
 
@@ -61,7 +61,7 @@ Turn a document or deliberately assembled body of writing into a structured, on-
 **As an agent skill** (gives you the `/corpus-to-skill` command in Claude Code, Copilot CLI, Amp):
 
 ```bash
-git clone https://github.com/nicholasswhite/book-to-skill.git ~/.claude/skills/corpus-to-skill
+git clone https://github.com/nicholasswhite/corpus-to-skill.git ~/.claude/skills/corpus-to-skill
 # then, in your agent session:
 /corpus-to-skill /path/to/source-folder [skill-name]
 ```
@@ -95,7 +95,7 @@ book-to-skill /path/to/book.pdf --mode text
 
     The full `SKILL.md` spec: every step, depth budget, and quality rule.
 
--   :material-license:{ .lg .middle } __[License](https://github.com/nicholasswhite/book-to-skill/blob/master/LICENSE.md)__
+-   :material-license:{ .lg .middle } __[License](https://github.com/nicholasswhite/corpus-to-skill/blob/master/LICENSE.md)__
 
     ---
 

@@ -24,15 +24,14 @@ experimental; richer adapters are scaffolded.
 `book_to_skill`, and `BOOK_SKILL_*` as supported surfaces. The Python
 distribution also retains the `book-to-skill` identifier so existing installs
 upgrade safely instead of creating two packages that own the same files;
-framework APIs remain under `claim_framework`. The GitHub repository keeps its
-working legacy URL until any external rename is coordinated.
+framework APIs remain under `claim_framework`.
 
 ## Quickstart: build a corpus skill
 
 Prerequisites: Git and Python 3.9 or newer. In a fresh checkout:
 
 ```bash
-git clone https://github.com/nicholasswhite/book-to-skill.git corpus-to-skill
+git clone https://github.com/nicholasswhite/corpus-to-skill.git
 cd corpus-to-skill
 python -m pip install .
 corpus-to-skill build tests/fixtures/corpus_demo/manifest.json --output corpus-build

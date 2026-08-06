@@ -23,4 +23,4 @@
    ╚████╔╝ ██║██║  ██║╚██████╔╝██║███████╗██║╚██████╔╝╚█████╔╝██║  ██║ █████╔╝     ██║
     ╚═══╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝╚══════╝╚═╝ ╚═════╝  ╚════╝ ╚═╝  ╚═╝ ╚════╝      ╚═╝
 
-  Corpus to Skill  ·  github.com/nicholasswhite/book-to-skill
+  Corpus to Skill  ·  github.com/nicholasswhite/corpus-to-skill
