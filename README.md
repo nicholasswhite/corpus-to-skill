@@ -9,17 +9,19 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/virgiliojr94/book-to-skill/releases"><img src="https://img.shields.io/github/v/release/virgiliojr94/book-to-skill?style=for-the-badge&color=blueviolet" alt="Latest release"></a>
+  <a href="https://github.com/nicholasswhite/book-to-skill/releases"><img src="https://img.shields.io/github/v/release/nicholasswhite/book-to-skill?style=for-the-badge&color=blueviolet" alt="Latest release"></a>
   <img src="https://img.shields.io/badge/Agent_Skills-Open_Standard-blueviolet?style=for-the-badge" alt="Agent Skills standard">
   <img src="https://img.shields.io/badge/PDF%20%E2%80%A2%20EPUB%20%E2%80%A2%20DOCX%20%E2%80%A2%20MD%20%E2%80%A2%20HTML%20%E2%80%A2%20RTF%20%E2%80%A2%20MOBI-supported-green?style=for-the-badge" alt="Formats supported">
   <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="MIT License">
-  <a href="https://github.com/sponsors/virgiliojr94"><img src="https://img.shields.io/github/sponsors/virgiliojr94?style=for-the-badge&color=ea4aaa&logo=githubsponsors&logoColor=white" alt="Sponsor"></a>
+  <a href="https://github.com/sponsors/virgiliojr94"><img src="https://img.shields.io/github/sponsors/virgiliojr94?style=for-the-badge&color=ea4aaa&logo=githubsponsors&logoColor=white" alt="Support the original creator"></a>
 </p>
 
-<p align="center">
-  <a href="https://trendshift.io/repositories/27038?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-27038" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/repositories/27038" alt="virgiliojr94%2Fbook-to-skill | Trendshift" width="250" height="55"/></a>
-  <a href="https://trendshift.io/repositories/27038?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-27038" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/trendshift/repositories/27038/daily?language=Python" alt="virgiliojr94%2Fbook-to-skill | Trendshift (daily, Python)" width="250" height="55"/></a>
-</p>
+> [!NOTE]
+> **Project lineage:** This repository is an independently maintained derivative
+> of [Virgilio Junior's original `book-to-skill` project](https://github.com/virgiliojr94/book-to-skill).
+> It is not affiliated with or maintained by the original project. Original
+> authorship remains credited in the Git history and MIT license; subsequent
+> changes are maintained in this repository.
 
 <p align="center">
   <a href="#-why">Why</a> ·
@@ -133,7 +135,7 @@ syntax and artifacts unchanged.
 
 ```bash
 # Agent skill (registers /book-to-skill) — clone into your skills folder:
-git clone https://github.com/virgiliojr94/book-to-skill.git ~/.claude/skills/book-to-skill
+git clone https://github.com/nicholasswhite/book-to-skill.git ~/.claude/skills/book-to-skill
 # (Copilot CLI: ~/.copilot/skills/ · Amp/cross-agent: ~/.agents/skills/)
 ```
 
@@ -237,15 +239,18 @@ When in doubt, follow the license or terms of the source document. This project 
 
 ---
 
-## 💖 Sponsors
+## 💖 Original project and creator
 
 <img align="right" width="150" src="docs/assets/booklin-celebrating.png" alt="Booklin celebrating">
 
-book-to-skill is free and MIT-licensed, maintained on personal time. If it saves you tokens or study hours, consider sponsoring its upkeep: PR reviews, multilingual fixes, releases, and docs.
+This independently maintained repository builds on the original MIT-licensed
+`book-to-skill` project created by
+[Virgilio Junior](https://github.com/virgiliojr94). If the original foundation
+is useful to you, consider supporting its creator.
 
-**[Become a sponsor → github.com/sponsors/virgiliojr94](https://github.com/sponsors/virgiliojr94)**
+**[Support the original creator → github.com/sponsors/virgiliojr94](https://github.com/sponsors/virgiliojr94)**
 
-Every sponsor is listed in [BACKERS.md](BACKERS.md). Thank you for keeping open, privacy-first tooling alive. ✨
+The original project acknowledgements are preserved in [BACKERS.md](BACKERS.md).
 
 ## License
 
@@ -253,10 +258,10 @@ MIT — applies to the converter (code + skill definition) in this repository, *
 
 ## Star History
 
-<a href="https://www.star-history.com/?repos=virgiliojr94%2Fbook-to-skill&type=date&legend=top-left">
+<a href="https://www.star-history.com/?repos=nicholasswhite%2Fbook-to-skill&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=virgiliojr94/book-to-skill&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=virgiliojr94/book-to-skill&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=virgiliojr94/book-to-skill&type=date&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=nicholasswhite/book-to-skill&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=nicholasswhite/book-to-skill&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=nicholasswhite/book-to-skill&type=date&legend=top-left" />
  </picture>
 </a>
