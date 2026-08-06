@@ -5,11 +5,26 @@ assembled body of writing into a reusable Agent Skill, with a constrained local
 compiler for source-traceable text corpora.
 
 > [!NOTE]
-> **Lineage:** Corpus to Skill is an independently maintained derivative of
-> [Virgilio Junior's original
-> `book-to-skill`](https://github.com/virgiliojr94/book-to-skill). The host-agent
-> workflow and standalone extractor come from that project; the corpus compiler
-> and claim-framework direction are additions here.
+> **Lineage and differences.** Corpus to Skill is an independently maintained
+> derivative of [Virgilio Junior's original
+> `book-to-skill`](https://github.com/virgiliojr94/book-to-skill).
+>
+> **Inherited foundation:** the original project's host-agent document-conversion
+> workflow, multi-format `book_to_skill` extractor, and layered generated-skill
+> layout remain foundational here and continue to receive explicit credit.
+>
+> **Added in this repository:** a separate manifest-driven, offline compiler for
+> local text/Markdown corpora; a versioned, domain-neutral claim model and
+> cross-source relationship/synthesis pipeline; checksum-verified source spans
+> with inspectable claim, relation, dispute, gap, and traceability artifacts; and
+> deterministic build controls including stable IDs, resource budgets, caches,
+> recovery checkpoints, and safe pruning.
+>
+> The upstream MIT notice and Git history are preserved. The Corpus to Skill name
+> describes this expanded scope; it does not claim that inherited work originated
+> here or imply that the original author endorses or maintains this project. See
+> [Architecture](docs/ARCHITECTURE.md) and
+> [Compatibility](docs/COMPATIBILITY.md) for the component-by-component boundary.
 
 For agent users who repeatedly consult source material, developers who need
 local extraction, and advanced users with deliberately structured multi-source

@@ -14,11 +14,25 @@ Turn a document or deliberately assembled body of writing into a structured, on-
 [Skill reference](skill-reference.md){ .md-button }
 [GitHub](https://github.com/nicholasswhite/corpus-to-skill){ .md-button }
 
-!!! note "Lineage"
+!!! note "Lineage and differences"
     Corpus to Skill is an independently maintained derivative of
     [Virgilio Junior's original `book-to-skill`](https://github.com/virgiliojr94/book-to-skill).
-    The Python distribution retains its legacy identifier for safe upgrades;
-    the repository, product, and root Agent Skill are Corpus to Skill.
+
+    **Inherited foundation:** the original host-agent document-conversion
+    workflow, multi-format `book_to_skill` extractor, and layered generated-skill
+    layout remain foundational here and continue to receive explicit credit.
+
+    **Added in this repository:** a separate manifest-driven, offline corpus
+    compiler; versioned domain-neutral claim and cross-source synthesis models;
+    checksum-verified source spans and inspectable claim, relation, dispute, gap,
+    and traceability artifacts; plus deterministic resource, cache, recovery, and
+    pruning controls.
+
+    The upstream MIT notice and Git history are preserved. The new name describes
+    the expanded scope; it does not claim that inherited work originated here or
+    imply upstream endorsement. See [Architecture](ARCHITECTURE.md) and
+    [Compatibility](COMPATIBILITY.md) for the detailed boundary. The Python
+    distribution retains its legacy identifier for safe upgrades.
 
 ---
 
