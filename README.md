@@ -9,16 +9,22 @@ compiler for source-traceable text corpora.
 > derivative of [Virgilio Junior's original
 > `book-to-skill`](https://github.com/virgiliojr94/book-to-skill).
 >
-> **Inherited foundation:** the original project's host-agent document-conversion
-> workflow, multi-format `book_to_skill` extractor, and layered generated-skill
-> layout remain foundational here and continue to receive explicit credit.
+> **What comes from the original:** the core workflow that reads common document
+> formats and turns them into an Agent Skill organized into a main guide,
+> chapters or sections, a glossary, patterns, and a cheatsheet.
 >
-> **Added in this repository:** a separate manifest-driven, offline compiler for
-> local text/Markdown corpora; a versioned, domain-neutral claim model and
-> cross-source relationship/synthesis pipeline; checksum-verified source spans
-> with inspectable claim, relation, dispute, gap, and traceability artifacts; and
-> deterministic build controls including stable IDs, resource budgets, caches,
-> recovery checkpoints, and safe pruning.
+> **Where Corpus to Skill extends the original:**
+>
+> - It adds a separate local builder for a chosen collection of text and
+>   Markdown files, while keeping the original document workflow.
+> - It tracks important ideas back to the exact source passage they came from.
+> - It compares ideas across sources and keeps agreements, disagreements,
+>   important conditions, and missing evidence visible instead of blending
+>   everything into one summary.
+> - It saves records you can inspect and reuses work from files that have not
+>   changed, making a collection easier to audit, update, and rebuild.
+> - It includes reusable pieces for other tools that compare sources and
+>   evidence, not only books.
 >
 > The upstream MIT notice and Git history are preserved. The Corpus to Skill name
 > describes this expanded scope; it does not claim that inherited work originated
