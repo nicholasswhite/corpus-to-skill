@@ -1,5 +1,8 @@
 # Corpus to Skill
 
+**Corpus** *(noun)* — a collection of written texts, especially the complete
+works of an author or a body of writing on a particular subject.
+
 **A corpus-to-Agent-Skill toolkit:** turn one document or a deliberately
 assembled body of writing into a reusable Agent Skill, with a constrained local
 compiler for source-traceable text corpora.

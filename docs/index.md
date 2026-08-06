@@ -6,6 +6,9 @@ hide:
 
 # Corpus to Skill
 
+**Corpus** *(noun)* — a collection of written texts, especially the complete
+works of an author or a body of writing on a particular subject.
+
 <p style="font-size: 1.25rem; max-width: 42rem;">
 Turn a document or deliberately assembled body of writing into a structured, on-demand agent skill — named frameworks, decision rules, and anti-patterns. <strong>Structure, not a summary.</strong>
 </p>
