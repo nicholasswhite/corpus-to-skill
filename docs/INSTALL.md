@@ -1,24 +1,24 @@
 ## 📥 Install
 
 > **Two ways to use it, do not confuse them:**
-> - **As an agent skill** (the `/book-to-skill` command in Claude Code, Copilot CLI, or Amp) → **`git clone` into your skills folder** (below). This is what gives you the slash command and the full convert-a-book flow.
-> - **As a standalone CLI** (just the text extractor) → `pip install book-to-skill`, then `book-to-skill --help`. This does **not** register the agent skill; it only installs the extraction engine. See [the CLI section](#standalone-cli-pip).
+> - **As an agent skill** (the `/corpus-to-skill` command in Claude Code, Copilot CLI, or Amp) → **`git clone` into your skills folder** (below). This gives you the full host-agent conversion flow.
+> - **As a Python package** → `pip install book-to-skill`. The distribution keeps its legacy identifier for safe upgrades and installs both the `corpus-to-skill` compiler and inherited `book-to-skill` extraction CLI. It does **not** register the Agent Skill. See [the CLI section](#python-package-and-clis-pip).
 
 The skill follows the open [Agent Skills](https://github.com/agentskills/agentskills) standard, so a single install works for any compatible host.
 
 **GitHub Copilot CLI** (personal skill):
 
 ```bash
-git clone https://github.com/virgiliojr94/book-to-skill.git ~/.copilot/skills/book-to-skill
+git clone https://github.com/nicholasswhite/book-to-skill.git ~/.copilot/skills/corpus-to-skill
 # then, in a `copilot` session:
 /skills reload
-/skills info book-to-skill
+/skills info corpus-to-skill
 ```
 
 Or the cross-agent path that Copilot CLI and Amp both discover:
 
 ```bash
-git clone https://github.com/virgiliojr94/book-to-skill.git ~/.agents/skills/book-to-skill
+git clone https://github.com/nicholasswhite/book-to-skill.git ~/.agents/skills/corpus-to-skill
 ```
 
 **Claude Code**:
@@ -26,38 +26,37 @@ git clone https://github.com/virgiliojr94/book-to-skill.git ~/.agents/skills/boo
 Copy this into your Claude Code session:
 
 ```
-Install book-to-skill: https://raw.githubusercontent.com/virgiliojr94/book-to-skill/master/SKILL.md
+Install corpus-to-skill: https://raw.githubusercontent.com/nicholasswhite/book-to-skill/master/SKILL.md
 ```
 
 Or manually using standard `git clone` (ensures modular engine files are fetched correctly):
 
 ```bash
-git clone https://github.com/virgiliojr94/book-to-skill.git ~/.claude/skills/book-to-skill
+git clone https://github.com/nicholasswhite/book-to-skill.git ~/.claude/skills/corpus-to-skill
 ```
 
 Then in any agent session:
 
 ```bash
-/book-to-skill ~/path/to/your-book.pdf
+/corpus-to-skill ~/path/to/your-sources/
 # or
-/book-to-skill ~/path/to/your-book.epub
+/corpus-to-skill ~/papers/paper.pdf ~/notes/project.md
 ```
 
-### Standalone CLI (pip)
+### Python package and CLIs (pip)
 
-`pip install book-to-skill` is a **separate, optional** path. It installs only the
-text-extraction engine as a CLI, for scripting or to grab the optional extractors;
-it does **not** register the `/book-to-skill` agent skill (use the `git clone` above
-for that).
+`pip install book-to-skill` is a **separate, optional** path. The distribution
+name is retained to make upgrades from earlier releases safe. It installs the
+manifest-driven `corpus-to-skill` compiler plus the inherited text-extraction
+engine for scripting; it does **not** register the `/corpus-to-skill` Agent
+Skill (use the `git clone` path above for that).
 
 ```bash
-pip install "book-to-skill[pdf,epub,docx]"   # engine + optional extractors
-book-to-skill ~/path/to/book.pdf --mode text  # or: python -m book_to_skill ...
-book-to-skill --check                          # report which extractors are installed
+pip install "book-to-skill[pdf,epub,docx]"          # compiler + optional extractors
+corpus-to-skill validate path/to/manifest.json       # corpus workflow
+book-to-skill ~/path/to/book.pdf --mode text         # inherited extractor
+book-to-skill --check                                 # extractor dependency report
 ```
-
----
-
 
 ---
 

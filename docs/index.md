@@ -4,19 +4,25 @@ hide:
   - toc
 ---
 
-# book-to-skill
+# Corpus to Skill
 
 <p style="font-size: 1.25rem; max-width: 42rem;">
-Turn any book or document into a structured, on-demand agent skill — named frameworks, decision rules, and anti-patterns. <strong>Structure, not a summary.</strong>
+Turn a document or deliberately assembled body of writing into a structured, on-demand agent skill — named frameworks, decision rules, and anti-patterns. <strong>Structure, not a summary.</strong>
 </p>
 
 [Get started](guide.md){ .md-button .md-button--primary }
 [Skill reference](skill-reference.md){ .md-button }
-[GitHub](https://github.com/virgiliojr94/book-to-skill){ .md-button }
+[GitHub](https://github.com/nicholasswhite/book-to-skill){ .md-button }
+
+!!! note "Lineage"
+    Corpus to Skill is an independently maintained derivative of
+    [Virgilio Junior's original `book-to-skill`](https://github.com/virgiliojr94/book-to-skill).
+    The repository and Python distribution retain legacy locators for a safe
+    migration; the product and root Agent Skill are Corpus to Skill.
 
 ---
 
-## Why book-to-skill
+## Why Corpus to Skill
 
 <div class="grid cards" markdown>
 
@@ -31,15 +37,15 @@ Turn any book or document into a structured, on-demand agent skill — named fra
 
     ---
 
-    Named frameworks, mental models, decision rules, and anti-patterns — the
-    author's toolkit, captured with their exact terms, not a book report.
+    Named frameworks, mental models, decision rules, and anti-patterns from the
+    source corpus, captured with its exact terms rather than flattened summaries.
 
 -   :material-flash:{ .lg .middle } __On-demand chapters__
 
     ---
 
-    Per-chapter files load only when the topic is relevant, so a 200-page book
-    costs tokens proportional to the question, not the page count.
+    Layered source and topic files load only when relevant, so a large corpus
+    costs tokens proportional to the question, not the total page count.
 
 -   :material-robot-happy:{ .lg .middle } __Multi-agent__
 
@@ -52,15 +58,15 @@ Turn any book or document into a structured, on-demand agent skill — named fra
 
 ## Install
 
-**As an agent skill** (gives you the `/book-to-skill` command in Claude Code, Copilot CLI, Amp):
+**As an agent skill** (gives you the `/corpus-to-skill` command in Claude Code, Copilot CLI, Amp):
 
 ```bash
-git clone https://github.com/virgiliojr94/book-to-skill.git ~/.claude/skills/book-to-skill
+git clone https://github.com/nicholasswhite/book-to-skill.git ~/.claude/skills/corpus-to-skill
 # then, in your agent session:
-/book-to-skill /path/to/book.pdf [skill-name]
+/corpus-to-skill /path/to/source-folder [skill-name]
 ```
 
-**As a standalone CLI** (just the text extractor, optional):
+**As the inherited extractor CLI** (optional; the package also installs the corpus compiler):
 
 ```bash
 pip install "book-to-skill[pdf,epub,docx]"
@@ -89,10 +95,10 @@ book-to-skill /path/to/book.pdf --mode text
 
     The full `SKILL.md` spec: every step, depth budget, and quality rule.
 
--   :material-heart:{ .lg .middle } __[Sponsor](https://github.com/sponsors/virgiliojr94)__
+-   :material-license:{ .lg .middle } __[License](https://github.com/nicholasswhite/book-to-skill/blob/master/LICENSE.md)__
 
     ---
 
-    book-to-skill is free and MIT. Sponsoring funds reviews, releases, and fixes.
+    Corpus to Skill is available under the MIT License, including its inherited notice.
 
 </div>

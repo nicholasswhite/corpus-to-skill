@@ -43,6 +43,15 @@ jobs:
           cp README.md docs/guide.md
           cp SKILL.md docs/skill-reference.md
           cp BACKERS.md docs/BACKERS.md
+          sed -i \
+            -e 's#](SKILL.md)#](skill-reference.md)#g' \
+            -e 's#](docs/#](#g' \
+            -e 's#](CONTRIBUTING.md)#](https://github.com/nicholasswhite/book-to-skill/blob/master/CONTRIBUTING.md)#g' \
+            -e 's#](SECURITY.md)#](https://github.com/nicholasswhite/book-to-skill/blob/master/SECURITY.md)#g' \
+            -e 's#](LICENSE.md)#](https://github.com/nicholasswhite/book-to-skill/blob/master/LICENSE.md)#g' \
+            docs/guide.md
+          sed -i 's#](../README.md)#](guide.md)#g' \
+            docs/FAQ.md docs/HOW_IT_WORKS.md docs/INSTALL.md docs/USAGE.md
       - name: Build
         run: mkdocs build
       - name: Deploy to gh-pages (master push only)

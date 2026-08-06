@@ -477,12 +477,15 @@ def test_aggregate_rejects_multiple_score_attempts_for_one_prediction():
         aggregate_scores((first, second_attempt), minimum_resolved_count=2)
 
 
-def test_prediction_module_import_does_not_import_book_to_skill():
+def test_prediction_module_import_does_not_import_conversion_engines():
     script = """
 import sys
 import claim_framework.prediction
 assert 'book_to_skill' not in sys.modules, sorted(
     name for name in sys.modules if name.startswith('book_to_skill')
+)
+assert 'corpus_to_skill' not in sys.modules, sorted(
+    name for name in sys.modules if name.startswith('corpus_to_skill')
 )
 """
     result = subprocess.run(

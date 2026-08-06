@@ -2,7 +2,7 @@
 
 This page records the support boundary for the additive corpus workflow and the
 domain-neutral `claim_framework`. It complements the [corpus workflow](CORPUS_WORKFLOW.md)
-and the [protected legacy contract](LEGACY_COMPATIBILITY.md).
+and the [compatibility contract](COMPATIBILITY.md).
 
 ## Feature stability
 
@@ -18,7 +18,8 @@ that an unreleased API has been published as a separate package.
 
 | Feature | Status | Current boundary |
 |---|---|---|
-| Existing `/book-to-skill` agent workflow and extraction CLI | **Stable / protected** | Existing inputs, defaults, public imports, exit behavior, and artifact locations are characterized in `tests/test_legacy_contract.py`. |
+| `/corpus-to-skill` host-agent workflow | **Stable within its specification** | The root `SKILL.md` defines document analysis, generation, update/fold-in, quality, and cleanup behavior across compatible hosts. |
+| Inherited `book-to-skill` extraction CLI and `book_to_skill` API | **Stable / protected** | Existing inputs, defaults, public imports, exit behavior, and artifact locations are characterized in `tests/test_legacy_contract.py`. |
 | Persisted `claim_framework` schema v1 and canonical JSON | **Supported** | Readers accept exactly schema `1.0`, reject unknown fields, and are guarded by a golden record for every registered persisted type. |
 | Local `ClaimStore`, source spans, provenance resolution, normalization, relations, and synthesis | **Supported** | Domain-neutral, deterministic local APIs; heuristic relation labels still require review for consequential use. |
 | `corpus-to-skill` text/Markdown-family workflow | **Supported MVP** | Two or more local relative sources, exact offsets into sanitized extracted text, deterministic offline extraction, and a separate output tree. |
@@ -29,7 +30,7 @@ that an unreleased API has been published as a separate package.
 | Recovery checkpoints and selective cache pruning | **Supported** | Builds record the last durable stage and completed source IDs. `build --prune-cache` removes only previously declared, checksum-matching generated cache files; later reasoning stages still rerun. |
 | Schema migration CLI and downstream-result caching | **Scaffolded** | Schema v1 needs no migration yet. There is no separate `resume` or `migrate` subcommand, and normalization through compilation reruns. |
 | Live/model integrations and performance benchmarks | **Scaffolded** | Pytest opt-in gates exist. The repository currently supplies only a gate-characterization fixture, not a live provider adapter or a release benchmark. |
-| Separate publication of `claim_framework` | **Scaffolded** | It ships in the `book-to-skill` wheel without book/parser imports. Cross-repository extraction or publication needs separate approval. |
+| Separate publication of `claim_framework` | **Scaffolded** | It ships in the retained `book-to-skill` distribution without book/parser imports. Cross-repository extraction or publication needs separate approval. |
 
 ## Schema v1 compatibility contract
 

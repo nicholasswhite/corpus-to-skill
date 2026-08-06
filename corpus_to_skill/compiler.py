@@ -18,7 +18,7 @@ from pathlib import PurePosixPath
 from typing import Any, Callable, Dict, Iterable, List, Mapping, Optional, Sequence, Set, Tuple
 from urllib.parse import urlsplit, urlunsplit
 
-from book_to_skill.corpus.security import instruction_pattern_ids
+from corpus_to_skill.security import instruction_pattern_ids
 from book_to_skill.sanitize import sanitize_extracted_text
 from claim_framework.jsonio import (
     canonical_dumps,

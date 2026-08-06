@@ -2,11 +2,14 @@
 
 ## Scope
 
-book-to-skill is a local conversion tool. It reads document files you point it at
-and writes skill files to your skills directory. It does **not** upload your files,
-phone home, or run a network service. The main security surface is:
+Corpus to Skill includes local Python CLIs and a host-agent conversion workflow.
+The inherited extractor and deterministic manifest compiler do not upload files,
+phone home, or run a network service. The host-agent workflow can place source
+content in the context of the model configured by your agent host, so that
+host's data-handling and provider settings apply. The main security surfaces are:
 
 - the Python extraction code (parsing untrusted document files), and
+- untrusted instructions embedded in source material or generated skills, and
 - the optional dependencies it can install on request (`pip install …` when you
   choose `--install-missing yes`).
 
@@ -29,5 +32,5 @@ crafted input), and the impact you observed. We aim to acknowledge within a few 
 
 - Run `python3 scripts/extract.py --check` to see exactly which extractors are in
   use; install dependencies yourself if you prefer to control what is added.
-- Only convert documents you trust and have the right to process (see the README's
-  Copyright & fair-use section).
+- Only convert sources you trust and have the right to process (see the README's
+  License and attribution section).

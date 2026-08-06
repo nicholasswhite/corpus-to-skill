@@ -338,6 +338,7 @@ def test_importing_evaluation_does_not_import_book_or_predictive_modules():
 import sys
 import claim_framework.evaluation
 assert not any(name.startswith('book_to_skill') for name in sys.modules)
+assert not any(name.startswith('corpus_to_skill') for name in sys.modules)
 assert 'claim_framework.prediction' not in sys.modules
 """
     result = subprocess.run(

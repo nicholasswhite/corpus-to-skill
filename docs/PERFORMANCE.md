@@ -31,17 +31,17 @@ tables and code as markdown. Pick text mode for prose, technical mode for code/t
 
 ## The Discovery Loop Tax
 
-Tokens entering context to answer **one** targeted question. book-to-skill loads a
+Tokens entering context to answer **one** targeted question. Corpus to Skill loads a
 resident core (~4K) plus one compiled chapter (~1K) ≈ **5,000 tokens**.
 
-| Book (chapter size) | Context-dump | Discovery loop | book-to-skill | vs dump / loop |
+| Book (chapter size) | Context-dump | Discovery loop | Corpus to Skill | vs dump / loop |
 |---------------------|-------------:|---------------:|--------------:|:--------------:|
 | Think Python 2 (small) | 119,264 | 12,152 | ~5,000 | 24× / 2.4× |
 | Working Backwards (medium) | 175,253 | 33,444 | ~5,000 | 35× / 6.7× |
 | AI Engineering (large) | 256,287 | 77,866 | ~5,000 | 51× / 15.6× |
 
 ```bash
-python3 tools/discovery_tax.py --full-text /tmp/book_skill_work/full_text.txt --target-chapter 5
+python3 tools/discovery_tax.py --full-text /tmp/corpus_skill_work/full_text.txt --target-chapter 5
 ```
 
 - The **context-dump** advantage (24–51×) is the strongest claim: that cost recurs on

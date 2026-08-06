@@ -178,7 +178,7 @@ class LegacyCliContractTests(unittest.TestCase):
                 self.assertIn(
                     f"Meta -> {output_dir / 'metadata.json'}", result.stdout
                 )
-                self.assertIn("book-to-skill", result.stderr)
+                self.assertIn("Corpus to Skill", result.stderr)
                 self.assertEqual(
                     sorted(path.name for path in output_dir.iterdir()),
                     ["full_text.txt", "metadata.json"],
@@ -327,6 +327,45 @@ class LegacyCliContractTests(unittest.TestCase):
         )
         self.assertTrue((output_dir / "full_text.txt").exists())
         self.assertTrue((output_dir / "metadata.json").exists())
+
+    def test_corpus_workdir_environment_takes_precedence(self):
+        corpus_output = self.base / "corpus-environment-output"
+        legacy_output = self.base / "legacy-environment-output"
+        env = os.environ.copy()
+        env.update(
+            {
+                "CORPUS_SKILL_WORKDIR": str(corpus_output),
+                "BOOK_SKILL_WORKDIR": str(legacy_output),
+                "CORPUS_SKILL_INSTALL_MISSING": "no",
+                "BOOK_SKILL_INSTALL_MISSING": "yes",
+                "PYTHONDONTWRITEBYTECODE": "1",
+                "PYTHONIOENCODING": "utf-8",
+            }
+        )
+
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "book_to_skill",
+                str(self.source),
+                "--mode",
+                "text",
+            ],
+            cwd=REPO_ROOT,
+            env=env,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=30,
+            check=False,
+        )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertTrue((corpus_output / "full_text.txt").is_file())
+        self.assertTrue((corpus_output / "metadata.json").is_file())
+        self.assertFalse(legacy_output.exists())
 
 
 class PublicApiContractTests(unittest.TestCase):

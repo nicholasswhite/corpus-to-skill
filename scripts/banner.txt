@@ -23,4 +23,4 @@
    ╚████╔╝ ██║██║  ██║╚██████╔╝██║███████╗██║╚██████╔╝╚█████╔╝██║  ██║ █████╔╝     ██║
     ╚═══╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝╚══════╝╚═╝ ╚═════╝  ╚════╝ ╚═╝  ╚═╝ ╚════╝      ╚═╝
 
-  book-to-skill  ·  github.com/virgiliojr94/book-to-skill
+  Corpus to Skill  ·  github.com/nicholasswhite/book-to-skill

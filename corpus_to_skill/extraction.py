@@ -5,8 +5,8 @@ from __future__ import annotations
 import re
 from typing import Iterable, List, Optional, Tuple
 
-from book_to_skill.corpus.ingestion import IngestedSource
-from book_to_skill.corpus.security import instruction_pattern_ids
+from corpus_to_skill.ingestion import IngestedSource
+from corpus_to_skill.security import instruction_pattern_ids
 from claim_framework.jsonio import sha256_text, stable_id
 from claim_framework.records import (
     ClaimSemantics,

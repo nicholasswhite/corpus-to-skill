@@ -1,8 +1,15 @@
-# Book to Skill
+# Corpus to Skill
 
-**A document-to-Agent-Skill toolkit:** turn supported documents into Agent
-Skills, or compile a constrained local text corpus into a source-traceable
-skill.
+**A corpus-to-Agent-Skill toolkit:** turn one document or a deliberately
+assembled body of writing into a reusable Agent Skill, with a constrained local
+compiler for source-traceable text corpora.
+
+> [!NOTE]
+> **Lineage:** Corpus to Skill is an independently maintained derivative of
+> [Virgilio Junior's original
+> `book-to-skill`](https://github.com/virgiliojr94/book-to-skill). The host-agent
+> workflow and standalone extractor come from that project; the corpus compiler
+> and claim-framework direction are additions here.
 
 For agent users who repeatedly consult source material, developers who need
 local extraction, and advanced users with deliberately structured multi-source
@@ -12,21 +19,21 @@ The extractor and host-agent workflow are established. The local corpus
 compiler is a working, bounded text/Markdown MVP. Evaluation and prediction are
 experimental; richer adapters are scaffolded.
 
-**Compatibility.** Existing identifiers stay `book-to-skill`, `book_to_skill`,
-`/book-to-skill`, `corpus-to-skill`, and `claim_framework`.
-
-**Lineage.** This independent derivative builds on [Virgilio Junior's original
-`book-to-skill`](https://github.com/virgiliojr94/book-to-skill) root Agent Skill
-workflow and extractor; the corpus compiler and claim-framework direction are
-additions here.
+**Compatibility.** The project, root Agent Skill, and corpus compiler use
+`corpus-to-skill`. The inherited extractor keeps `book-to-skill`,
+`book_to_skill`, and `BOOK_SKILL_*` as supported surfaces. The Python
+distribution also retains the `book-to-skill` identifier so existing installs
+upgrade safely instead of creating two packages that own the same files;
+framework APIs remain under `claim_framework`. The GitHub repository keeps its
+working legacy URL until any external rename is coordinated.
 
 ## Quickstart: build a corpus skill
 
 Prerequisites: Git and Python 3.9 or newer. In a fresh checkout:
 
 ```bash
-git clone https://github.com/nicholasswhite/book-to-skill.git
-cd book-to-skill
+git clone https://github.com/nicholasswhite/book-to-skill.git corpus-to-skill
+cd corpus-to-skill
 python -m pip install .
 corpus-to-skill build tests/fixtures/corpus_demo/manifest.json --output corpus-build
 ```
@@ -39,10 +46,10 @@ no service credentials.
 
 ## Choose a path
 
-Book to Skill has two workflows and one reusable extraction utility. They do not
+Corpus to Skill has two workflows and one reusable extraction utility. They do not
 share the same inputs, outputs, provenance, or model behavior.
 
-- **Host-agent document workflow:** Give `/book-to-skill` one or more supported
+- **Host-agent document workflow:** Give `/corpus-to-skill` one or more supported
   document files, folders, or globs. A compatible host agent uses the extractor,
   analyzes the material, and authors a layered Agent Skill.
 - **Local corpus workflow:** Give `corpus-to-skill` a manifest with at least two
@@ -56,7 +63,9 @@ share the same inputs, outputs, provenance, or model behavior.
 
 ## Install and use
 
-This checkout declares `book-to-skill` 1.3.0 and Python 3.9 or newer.
+This checkout declares version 1.3.0 and Python 3.9 or newer. Its published
+Python distribution remains `book-to-skill` for safe in-place upgrades while
+also installing the canonical `corpus-to-skill` compiler command.
 
 ### Host-agent document workflow
 
@@ -64,7 +73,7 @@ Clone this repository into an Agent Skill directory discovered by your host.
 Discovery remains host-dependent; use a compatible skill root listed in
 `SKILL.md` and consult your host's documentation for setup details. The root
 [`SKILL.md`](SKILL.md) defines the host-dependent
-`/book-to-skill <path-to-document-folder-or-glob>... [skill-name-slug]`
+`/corpus-to-skill <path-to-document-folder-or-glob>... [skill-name-slug]`
 workflow. The host agent runs the extractor, analyzes the material, and writes
 the layered skill.
 
@@ -99,7 +108,7 @@ intermediates, not a generated skill or a provenance graph.
 
 The same CLI is exposed by the `book_to_skill` module and accepts the same input
 paths and flags as the console script. See
-[`docs/LEGACY_COMPATIBILITY.md`](docs/LEGACY_COMPATIBILITY.md) for the protected
+[`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md) for the protected
 CLI and Python API contract.
 
 ### Manifest-driven corpus compiler
@@ -198,7 +207,7 @@ Current limitations and non-goals:
 - Evaluation and prediction are separate APIs, not build stages. The project
   claims no historical accuracy, calibration, predictive power, universal
   evidence score, or truth score.
-- Book to Skill is not a truth engine, RAG system, autonomous researcher, or a
+- Corpus to Skill is not a truth engine, RAG system, autonomous researcher, or a
   guarantee that generated material is correct or safe to redistribute.
 
 ## Development
@@ -218,15 +227,16 @@ or authorizing either category. Contribution guidance is in
 [`CONTRIBUTING.md`](CONTRIBUTING.md), and security reporting instructions are in
 [`SECURITY.md`](SECURITY.md).
 
-## Lineage and license
+## License and attribution
 
 This repository began as a derivative of [Virgilio Junior's original
 `book-to-skill`](https://github.com/virgiliojr94/book-to-skill) project. It
 retains the relevant upstream Git history and is now independently maintained.
-The established `/book-to-skill` workflow and extraction engine come from that
-lineage; this repository adds a separately scoped corpus and claim-framework
-direction. It is not maintained by or affiliated with the original project, and
-no sponsorship, endorsement, partnership, or continuing affiliation is implied.
+The host-agent workflow and extraction engine descend from that lineage; this
+repository adds a separately scoped corpus and claim-framework direction and
+exposes the project skill as `/corpus-to-skill`. It is not maintained by or
+affiliated with the original project, and no sponsorship, endorsement,
+partnership, or continuing affiliation is implied.
 
 The software remains available under the [MIT License](LICENSE.md), including
 the inherited original notice:

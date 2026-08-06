@@ -24,6 +24,7 @@ def test_non_book_example_uses_only_the_claim_framework_and_runs():
         elif isinstance(node, ast.ImportFrom) and node.module:
             imported_roots.add(node.module.partition(".")[0])
     assert "book_to_skill" not in imported_roots
+    assert "corpus_to_skill" not in imported_roots
     assert "claim_framework" in imported_roots
 
     completed = subprocess.run(

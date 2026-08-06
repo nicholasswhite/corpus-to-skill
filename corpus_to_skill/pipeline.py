@@ -8,20 +8,20 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable, List, Optional, Tuple, Union
 
-from book_to_skill.corpus.budget import (
+from corpus_to_skill.budget import (
     DEFAULT_CORPUS_RESOURCE_BUDGET,
     CorpusResourceBudget,
     CorpusResourceUsage,
 )
-from book_to_skill.corpus.cache import CachePruneResult, prune_obsolete_cache
-from book_to_skill.corpus.compiler import compile_corpus_skill
-from book_to_skill.corpus.extraction import EXTRACTOR_VERSION, extract_claims
-from book_to_skill.corpus.ingestion import (
+from corpus_to_skill.cache import CachePruneResult, prune_obsolete_cache
+from corpus_to_skill.compiler import compile_corpus_skill
+from corpus_to_skill.extraction import EXTRACTOR_VERSION, extract_claims
+from corpus_to_skill.ingestion import (
     ADAPTER_VERSION,
     CorpusIngestionError,
     ingest_source,
 )
-from book_to_skill.corpus.manifest import load_manifest
+from corpus_to_skill.manifest import load_manifest
 from claim_framework.jsonio import (
     canonical_bytes,
     sha256_bytes,

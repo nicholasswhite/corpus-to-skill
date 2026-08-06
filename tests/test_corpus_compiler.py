@@ -11,7 +11,7 @@ from typing import Tuple
 
 import pytest
 
-from book_to_skill.corpus.compiler import compile_corpus_skill
+from corpus_to_skill.compiler import compile_corpus_skill
 from claim_framework.jsonio import sha256_text
 from claim_framework.provenance import ProvenanceChecksumMismatch, ProvenanceResolver
 from claim_framework.records import (

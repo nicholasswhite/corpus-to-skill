@@ -1,10 +1,10 @@
 # Corpus workflow
 
 The corpus workflow builds one provenance-aware skill from two or more local
-sources. It is an additive path: it does not replace the existing
-`/book-to-skill` agent workflow or the `book-to-skill` extraction CLI. See
-[Protected Legacy Compatibility](LEGACY_COMPATIBILITY.md) for those preserved
-contracts.
+sources. It complements the host-dependent `/corpus-to-skill` Agent Skill and
+reuses the inherited `book-to-skill` extraction engine without changing that
+legacy CLI contract. See [Compatibility](COMPATIBILITY.md) for the preserved
+surfaces.
 
 The current corpus implementation is an offline, deterministic MVP for
 plain-text and Markdown-family files. It records source claims, conservative
@@ -38,8 +38,8 @@ corpus-to-skill build incident-corpus/manifest.json --output corpus-build
 The module form is equivalent:
 
 ```bash
-python -m book_to_skill.corpus validate incident-corpus/manifest.json
-python -m book_to_skill.corpus build incident-corpus/manifest.json --output corpus-build
+python -m corpus_to_skill validate incident-corpus/manifest.json
+python -m corpus_to_skill build incident-corpus/manifest.json --output corpus-build
 ```
 
 `validate` checks the JSON contract, identifiers, source count, and that source

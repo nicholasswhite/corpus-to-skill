@@ -1,6 +1,6 @@
-# Contributing to book-to-skill
+# Contributing to Corpus to Skill
 
-Thanks for helping improve book-to-skill. This project turns books and documents
+Thanks for helping improve Corpus to Skill. This project turns written source corpora
 into structured agent skills; contributions that make extraction more robust,
 generation higher-signal, or the docs clearer are all welcome.
 
@@ -12,14 +12,15 @@ generation higher-signal, or the docs clearer are all welcome.
   benefit will be asked for evidence first.
 - **Keep `SKILL.md` lean.** It is the always-loaded converter spec. Prefer editing
   existing steps over adding new ones; justify net additions.
-- **Never ship raw book text.** Generated skills synthesize; they never reproduce
-  long passages. Respect source licenses (see the README's Copyright section).
+- **Never ship raw source text.** Generated skills synthesize; they never
+  reproduce long passages. Respect source licenses and access rules (see the
+  README's License and attribution section).
 
 ## Development
 
 ```bash
-git clone https://github.com/virgiliojr94/book-to-skill.git
-cd book-to-skill
+git clone https://github.com/nicholasswhite/book-to-skill.git corpus-to-skill
+cd corpus-to-skill
 python3 -m venv .venv && . .venv/bin/activate
 pip install pytest ruff
 python3 scripts/extract.py --check     # see which optional extractors you have
@@ -50,7 +51,7 @@ python3 tools/validate_skill.py SKILL.md
   links to the README or docs.** Recognition in the README is a
   [GitHub Sponsors](https://github.com/sponsors/virgiliojr94) benefit (sponsors are
   listed in `BACKERS.md`). This keeps the project's most visible surface reserved
-  for the people funding its upkeep. Building something inspired by book-to-skill
+  for the people funding its upkeep. Building something inspired by Corpus to Skill
   is genuinely appreciated — sharing it in an issue or discussion is welcome.
 
 ## Releases
@@ -69,7 +70,7 @@ git tag vX.Y.Z && git push origin master vX.Y.Z
 ```
 
 git-cliff is a dev-only tool (a single static binary; not a runtime dependency
-of book-to-skill). See `cliff.toml` for the type→section mapping.
+of Corpus to Skill). See `cliff.toml` for the type→section mapping.
 
 ## Reporting bugs / requesting features
 

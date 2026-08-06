@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Extract text from a document file for book-to-skill processing.
+Extract text with the inherited Book to Skill engine used by Corpus to Skill.
 Backward-compatible entrypoint wrapper.
 """
 

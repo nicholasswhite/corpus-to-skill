@@ -10,7 +10,7 @@ into an agent's context to answer one targeted question:
                       pulls raw chapters until it locates the answer (and, per
                       Kyle Parratt's critique, backtracks for missing
                       definitions). These fetched pages land in history.
-  3. book-to-skill  — a small resident SKILL.md core + one pre-compiled chapter
+  3. corpus-to-skill  — a small resident SKILL.md core + one pre-compiled chapter
                       loaded on demand.
 
 Honesty notes:
@@ -137,7 +137,7 @@ def main() -> int:
     prior = best_chapter(chapters, n - 1, count_tokens)
     prior_raw = prior[1] if prior else 0
 
-    # book-to-skill resident cost
+    # corpus-to-skill resident cost
     if args.skill_dir:
         sd = Path(args.skill_dir)
         skill_md = sd / "SKILL.md"
@@ -177,9 +177,9 @@ def main() -> int:
     print(f"    context-dump      : {dump:>9,}   (resident, re-billed EVERY turn)")
     print(f"    discovery (best)  : {disc_best:>9,}   ToC ({toc_tok:,}) + raw target chapter ({target_raw:,})")
     print(f"    discovery (loop)  : {disc_loop:>9,}   + 1 prior chapter for a missing definition ({prior_raw:,})")
-    print(f"    book-to-skill     : {skill:>9,}   core [{core_label}] ({core:,}) + compiled chapter ({comp_chapter:,})\n")
+    print(f"    corpus-to-skill     : {skill:>9,}   core [{core_label}] ({core:,}) + compiled chapter ({comp_chapter:,})\n")
 
-    print("  book-to-skill advantage:")
+    print("  corpus-to-skill advantage:")
     print(f"    vs context-dump   : {ratio(dump, skill)} fewer tokens")
     print(f"    vs discovery best : {ratio(disc_best, skill)} fewer tokens")
     print(f"    vs discovery loop : {ratio(disc_loop, skill)} fewer tokens")

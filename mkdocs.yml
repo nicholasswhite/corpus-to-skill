@@ -1,8 +1,8 @@
-site_name: book-to-skill
-site_description: Convert books and documents into structured, on-demand agent skills.
-site_url: https://booktoskill.is-a.dev/
-repo_url: https://github.com/virgiliojr94/book-to-skill
-repo_name: virgiliojr94/book-to-skill
+site_name: Corpus to Skill
+site_description: Compile written source corpora into structured, source-traceable agent skills.
+site_url: https://nicholasswhite.github.io/book-to-skill/
+repo_url: https://github.com/nicholasswhite/book-to-skill
+repo_name: nicholasswhite/book-to-skill
 edit_uri: ""
 
 # index.md is a committed landing page. Guide (README.md) and Skill Reference
@@ -11,8 +11,6 @@ edit_uri: ""
 
 theme:
   name: material
-  logo: assets/logo.png
-  favicon: assets/logo.png
   icon:
     repo: fontawesome/brands/github
   palette:
@@ -49,7 +47,7 @@ nav:
   - Usage: USAGE.md
   - Corpus workflow: CORPUS_WORKFLOW.md
   - Framework status & operations: FRAMEWORK_STATUS.md
-  - Legacy compatibility: LEGACY_COMPATIBILITY.md
+  - Compatibility: COMPATIBILITY.md
   - Install: INSTALL.md
   - FAQ: FAQ.md
   - Architecture: ARCHITECTURE.md

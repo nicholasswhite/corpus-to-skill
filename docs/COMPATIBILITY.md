@@ -1,16 +1,15 @@
-# Protected Legacy Compatibility
+# Compatibility
 
-The repository has two established book-to-skill surfaces. Corpus features must
-be added beside them. Unless a compatibility-breaking change is explicitly
-approved, neither surface may be removed, renamed, redirected through corpus
-code, or given new required configuration.
+Corpus to Skill has two canonical entry surfaces and one inherited extraction
+surface. The product rename does not erase the original Book to Skill lineage or
+break users of its standalone extractor.
 
-## 1. Agent skill: `/book-to-skill`
+## 1. Agent Skill: `/corpus-to-skill`
 
 The root `SKILL.md` defines the model-driven conversion workflow:
 
 ```text
-/book-to-skill <path-to-document-folder-or-glob>... [skill-name-slug]
+/corpus-to-skill <path-to-document-folder-or-glob>... [skill-name-slug]
 ```
 
 With no special instruction, a document path starts Full Conversion. The skill
@@ -21,7 +20,7 @@ extractor, presents the cost preflight, and asks before generation.
 The destination remains host-aware. It is selected from the existing Copilot,
 Amp, or Claude skill roots according to the rules in `SKILL.md`; a missing or
 ambiguous destination is resolved with the user rather than silently changed.
-The generated single-book artifact remains:
+The generated skill artifact remains:
 
 ```text
 <skills-home>/<slug>/
@@ -32,16 +31,33 @@ The generated single-book artifact remains:
 └── cheatsheet.md
 ```
 
-The extractor's temporary `book_skill_work` directory is an intermediate for
-this workflow and is cleaned up only after the generated skill has been handled.
-Corpus commands must use a distinct entry point and output scope; they must not
-rewrite an existing generated book skill unless the user invokes the established
-update, overwrite, or rename flow.
+The Agent Skill sets `CORPUS_SKILL_WORKDIR` to a dedicated temporary
+`corpus_skill_work` directory and cleans it only after the generated skill has
+been handled. Corpus commands use a distinct output scope and must not rewrite
+an existing generated skill unless the user invokes the established update,
+overwrite, or rename flow.
 
-## 2. Standalone extraction CLI
+## 2. Corpus compiler
 
-The separately installable Python package is an extraction engine, not the
-model-driven skill generator. These entry points are equivalent and protected:
+The deterministic manifest compiler uses the canonical project name:
+
+```text
+corpus-to-skill validate <manifest>
+corpus-to-skill build <manifest> --output <directory>
+python -m corpus_to_skill validate <manifest>
+python -m corpus_to_skill build <manifest> --output <directory>
+```
+
+The former `book_to_skill.corpus` module path remains importable as a
+compatibility namespace, but new code should import `corpus_to_skill` directly.
+The Python distribution itself deliberately remains `book-to-skill`: changing
+that identifier while shipping the inherited package would create overlapping
+install ownership and make ordinary upgrades unsafe.
+
+## 3. Inherited standalone extraction CLI
+
+The inherited extraction engine is not the model-driven skill generator. These
+entry points remain equivalent and protected:
 
 ```text
 book-to-skill <path-or-folder-or-glob>... [options]
@@ -55,8 +71,9 @@ defaults are:
 - `--mode technical|text`; default `text`, with invalid values falling back to
   `text`.
 - `--install-missing ask|yes|no`; default is
-  `BOOK_SKILL_INSTALL_MISSING` or `ask`. Bare `--install-missing` means `yes`,
-  and `--no-install-missing` means `no`.
+  `CORPUS_SKILL_INSTALL_MISSING`, then the legacy
+  `BOOK_SKILL_INSTALL_MISSING`, then `ask`. Bare `--install-missing` means
+  `yes`, and `--no-install-missing` means `no`.
 - `--check` prints dependency status and exits successfully even when optional
   extractors are absent.
 - `-h` and `--help` print usage to stderr and exit successfully.
@@ -72,10 +89,11 @@ duplicate paths keep their first occurrence.
 
 ### Configuration and artifacts
 
-`BOOK_SKILL_WORKDIR` selects the work directory. It is read when
-`book_to_skill.config` is imported; without it the default is
-`<system-temp>/book_skill_work`. A successful extraction writes UTF-8 files with
-fixed names:
+`CORPUS_SKILL_WORKDIR` selects the work directory for the renamed Agent Skill.
+The inherited `BOOK_SKILL_WORKDIR` remains a supported fallback. Both are read
+when `book_to_skill.config` is imported; without either variable, the extractor
+retains its legacy `<system-temp>/book_skill_work` default. A successful
+extraction writes UTF-8 files with fixed names:
 
 ```text
 <workdir>/full_text.txt
@@ -122,8 +140,8 @@ artifacts. Package-root `main()` is the existing `book_to_skill.utils.main`.
 
 ## Compatibility gate
 
-`tests/test_legacy_contract.py` characterizes the shim and module entry points,
-their exit/help behavior, work-directory and filename contract, exact metadata
-key sets and relationships, unknown-flag behavior, and package-root API exports.
-All existing tests and these characterization tests must remain green when an
-additive corpus feature is introduced.
+`tests/test_legacy_contract.py` characterizes the inherited shim and module entry
+points, their exit/help behavior, work-directory and filename contract, exact
+metadata key sets and relationships, unknown-flag behavior, and package-root API
+exports. Corpus tests exercise the canonical `corpus_to_skill` namespace and
+compiler CLI. Both surfaces must remain green.

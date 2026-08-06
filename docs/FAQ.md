@@ -4,7 +4,7 @@
 
 You can — but every conversation will burn that token budget upfront. A 400-page book is ~200K tokens. With a skill, only the chapters relevant to your question load — typically a SKILL.md core (~4K) plus the one chapter you asked about (~1K). The rest stays on disk until you need it.
 
-The economics are amortization, not size. Pasting the book pays the full token bill **on every turn of every session, forever**. book-to-skill pays the extraction cost **once** and every future conversation loads only the slice it needs. The bigger your context window, the more this matters — a large window makes the dump *possible*, not *cheap*.
+The economics are amortization, not size. Pasting the book pays the full token bill **on every turn of every session, forever**. Corpus to Skill pays the extraction cost **once** and every future conversation loads only the slice it needs. The bigger your context window, the more this matters — a large window makes the dump *possible*, not *cheap*.
 
 More importantly: raw text injection is retrieval. A skill is reasoning. When you load a chapter file, Claude isn't searching for keyword matches — it's working with pre-extracted named frameworks, principles, and mental models structured for application, not for reading.
 
@@ -26,7 +26,7 @@ Use the big window for what it's good at: a one-off pass over material you'll ne
 
 RAG works at query time: chunk the book → embed everything → find similar vectors → inject into prompt. It's optimized for "find me the part that talks about X."
 
-book-to-skill works at compile time: one deep analysis run extracts the author's actual frameworks, names them, describes when to use each, captures the anti-patterns. The output is structure the author spent years building — not a similarity search over their sentences.
+Corpus to Skill works at compile time: one deep analysis run extracts the author's actual frameworks, names them, describes when to use each, captures the anti-patterns. The output is structure the author spent years building — not a similarity search over their sentences.
 
 RAG answers: *"here are chunks close to your query."*  
 A skill answers: *"here are the 12 frameworks this author built, ready to reason with."*
@@ -34,9 +34,10 @@ A skill answers: *"here are the 12 frameworks this author built, ready to reason
 Pick by shape of the job:
 
 - **Wide and shallow** — a library of dozens of books, "find the part that mentions X" → a RAG tool (e.g. CandleKeep) wins.
-- **Narrow and deep** — one book or a tight cluster of related sources, frameworks you apply while you work → book-to-skill wins.
+- **Narrow and deep** — one book or a tight cluster of related sources, frameworks you apply while you work → Corpus to Skill wins.
 
-They're complementary, not competing: RAG indexes a shelf, book-to-skill masters a spine.
+They're complementary, not competing: RAG indexes a shelf; Corpus to Skill
+turns a selected body of writing into a working toolkit.
 
 ---
 
@@ -44,7 +45,7 @@ They're complementary, not competing: RAG indexes a shelf, book-to-skill masters
 
 For widely-known books (Clean Code, DDIA, Pragmatic Programmer), Claude has general knowledge — but it's compressed, averaged across the entire internet's discussion of the book, and may hallucinate specific quotes or chapter locations.
 
-book-to-skill works from your actual copy. Every framework name, every anti-pattern list, every chapter number is grounded in the text you provided. No training data drift, no hallucinated chapter titles.
+Corpus to Skill works from your actual copy. Every framework name, every anti-pattern list, every chapter number is grounded in the text you provided. No training data drift, no hallucinated chapter titles.
 
 It also shines for books Claude doesn't know at all: niche technical references, internal company documentation, recent publications, translated works.
 
@@ -54,7 +55,7 @@ It also shines for books Claude doesn't know at all: niche technical references,
 
 Absolutely true — if your workflow is "I have 80 separate books and I want to search across all of them," NotebookLM is the right tool.
 
-book-to-skill is built for a different job: you want to go deep on a specific topic or library, having multiple related documents (papers, chapters, notes) folded into a single unified skill, and even updating it over time as new material arrives! This integrates your customized knowledge base right into your coding or writing workflow, rather than in a separate browser tab.
+Corpus to Skill is built for a different job: you want to go deep on a specific topic or library, having multiple related documents (papers, chapters, notes) folded into a single unified skill, and even updating it over time as new material arrives! This integrates your customized knowledge base right into your coding or writing workflow, rather than in a separate browser tab.
 
 ---
 

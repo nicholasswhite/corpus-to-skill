@@ -5,14 +5,14 @@ build-backend = "hatchling.build"
 [project]
 name = "book-to-skill"
 version = "1.3.0"
-description = "Convert books and documents into structured, on-demand agent skills."
+description = "Compile written source corpora into structured, source-traceable agent skills."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 
 [project.scripts]
 book-to-skill = "book_to_skill.cli:main"
-corpus-to-skill = "book_to_skill.corpus.cli:main"
+corpus-to-skill = "corpus_to_skill.cli:main"
 
 [project.optional-dependencies]
 epub = ["ebooklib", "beautifulsoup4"]
@@ -47,4 +47,4 @@ markers = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["book_to_skill", "claim_framework"]
+packages = ["book_to_skill", "corpus_to_skill", "claim_framework"]

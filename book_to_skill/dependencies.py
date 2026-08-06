@@ -100,7 +100,11 @@ def install_python_packages(packages: list[str]) -> bool:
 
 
 def normalize_install_mode(argv: list[str]) -> str:
-    mode = os.environ.get("BOOK_SKILL_INSTALL_MISSING", "ask").lower()
+    mode = (
+        os.environ.get("CORPUS_SKILL_INSTALL_MISSING")
+        or os.environ.get("BOOK_SKILL_INSTALL_MISSING")
+        or "ask"
+    ).lower()
     if "--no-install-missing" in argv:
         return "no"
     if "--install-missing" in argv:

@@ -485,6 +485,9 @@ import claim_framework.store
 assert 'book_to_skill' not in sys.modules, sorted(
     name for name in sys.modules if name.startswith('book_to_skill')
 )
+assert 'corpus_to_skill' not in sys.modules, sorted(
+    name for name in sys.modules if name.startswith('corpus_to_skill')
+)
 assert 'claim_framework.evaluation' not in sys.modules
 assert 'claim_framework.prediction' not in sys.modules
 from claim_framework import evaluate

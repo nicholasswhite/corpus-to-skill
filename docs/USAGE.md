@@ -1,7 +1,7 @@
 ## 🚀 Usage
 
 ```
-/book-to-skill <path-to-document-folder-or-glob>... [skill-name-slug]
+/corpus-to-skill <path-to-document-folder-or-glob>... [skill-name-slug]
 ```
 
 Supported document formats: PDF, EPUB, DOCX, TXT, Markdown, reStructuredText, AsciiDoc, HTML, RTF, MOBI/AZW/AZW3.
@@ -10,16 +10,16 @@ Supported document formats: PDF, EPUB, DOCX, TXT, Markdown, reStructuredText, As
 
 ```bash
 # Process several files together into a unified skill
-/book-to-skill ~/papers/paper1.pdf ~/notes/export.txt unified-research
+/corpus-to-skill ~/papers/paper1.pdf ~/notes/export.txt unified-research
 
 # Process all supported files in a folder together
-/book-to-skill ~/workspace/project-docs/ project-knowledge
+/corpus-to-skill ~/workspace/project-docs/ project-knowledge
 
 # Process files matching a glob pattern
-/book-to-skill "~/books/*.epub" my-library
+/corpus-to-skill "~/books/*.epub" my-library
 
 # Update/fold new material into an existing skill folder
-/book-to-skill ~/articles/new-paper.pdf ~/.claude/skills/project-knowledge
+/corpus-to-skill ~/articles/new-paper.pdf ~/.claude/skills/project-knowledge
 ```
 
 After the skill is created, use it like any other agent skill:
@@ -46,7 +46,7 @@ corpus-to-skill validate incident-corpus/manifest.json
 corpus-to-skill build incident-corpus/manifest.json --output corpus-build
 ```
 
-The corpus command does not change `/book-to-skill` syntax or write into an
+The corpus command does not change `/corpus-to-skill` syntax or write into an
 existing legacy skill. Its current exact-offset adapter accepts local
 plain-text and Markdown-family sources; rich-document corpus adapters are not
 implemented yet.

@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to **book-to-skill** are documented here.
+All notable changes to **Corpus to Skill** are documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > becomes the changelog entry. See `cliff.toml` and CONTRIBUTING.md.
 
 ## [Unreleased]
+
+### Changed
+- **Project renamed to Corpus to Skill** — the product, root Agent Skill,
+  documentation site, and corpus compiler now use the `corpus-to-skill`
+  identity. The Python distribution deliberately retains `book-to-skill` for
+  safe in-place upgrades; the inherited extraction CLI, `book_to_skill` API,
+  and `BOOK_SKILL_*` environment variables remain supported.
 
 ### Fixed
 - **CJK-aware token estimate** — `estimate_tokens` now counts CJK codepoints

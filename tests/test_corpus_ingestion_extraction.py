@@ -8,10 +8,10 @@ from pathlib import Path
 
 import pytest
 
-from book_to_skill.corpus import ingestion as corpus_ingestion
-from book_to_skill.corpus.extraction import extract_claims
-from book_to_skill.corpus.ingestion import CorpusIngestionError, ingest_source
-from book_to_skill.corpus.manifest import ManifestError, load_manifest
+from corpus_to_skill import ingestion as corpus_ingestion
+from corpus_to_skill.extraction import extract_claims
+from corpus_to_skill.ingestion import CorpusIngestionError, ingest_source
+from corpus_to_skill.manifest import ManifestError, load_manifest
 from claim_framework.jsonio import sha256_text
 
 

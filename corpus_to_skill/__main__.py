@@ -1,5 +1,3 @@
-"""Run the Corpus to Skill CLI through its legacy module path."""
-
 from corpus_to_skill.cli import main
 
 

@@ -10,12 +10,12 @@ from pathlib import Path
 
 import pytest
 
-import book_to_skill.corpus.pipeline as corpus_pipeline
-from book_to_skill.corpus.budget import (
+import corpus_to_skill.pipeline as corpus_pipeline
+from corpus_to_skill.budget import (
     CorpusBudgetExceeded,
     CorpusResourceBudget,
 )
-from book_to_skill.corpus.pipeline import CorpusPipelineError, build_corpus
+from corpus_to_skill.pipeline import CorpusPipelineError, build_corpus
 
 
 FIXTURE_DIR = Path(__file__).parent / "fixtures" / "corpus_demo"
@@ -408,7 +408,7 @@ def test_module_cli_validate_and_build(tmp_path):
         [
             sys.executable,
             "-m",
-            "book_to_skill.corpus",
+            "corpus_to_skill",
             "validate",
             str(FIXTURE_DIR / "manifest.json"),
         ],
@@ -426,7 +426,7 @@ def test_module_cli_validate_and_build(tmp_path):
         [
             sys.executable,
             "-m",
-            "book_to_skill.corpus",
+            "corpus_to_skill",
             "build",
             str(FIXTURE_DIR / "manifest.json"),
             "--output",
@@ -443,3 +443,46 @@ def test_module_cli_validate_and_build(tmp_path):
     assert summary["status"] == "completed"
     assert summary["sources"] == 3
     assert (output / "skill" / "resilient-queue-operations" / "SKILL.md").is_file()
+
+
+def test_legacy_corpus_module_path_remains_compatible(tmp_path):
+    import book_to_skill.corpus as legacy_corpus
+    from book_to_skill.corpus.budget import (
+        CorpusResourceBudget as LegacyCorpusResourceBudget,
+    )
+    from book_to_skill.corpus.cli import main as legacy_cli_main
+    from book_to_skill.corpus.pipeline import build_corpus as legacy_build_corpus
+    from corpus_to_skill import load_manifest as canonical_load_manifest
+    from corpus_to_skill.budget import CorpusResourceBudget as CanonicalCorpusResourceBudget
+    from corpus_to_skill.cli import main as canonical_cli_main
+    from corpus_to_skill.pipeline import build_corpus as canonical_build_corpus
+
+    assert legacy_corpus.load_manifest is canonical_load_manifest
+    assert LegacyCorpusResourceBudget is CanonicalCorpusResourceBudget
+    assert legacy_cli_main is canonical_cli_main
+    assert legacy_build_corpus is canonical_build_corpus
+
+    result = legacy_build_corpus(
+        FIXTURE_DIR / "manifest.json",
+        tmp_path / "legacy-output",
+        budget=LegacyCorpusResourceBudget(),
+        clock=_clock,
+    )
+    assert len(result.source_records) == 3
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "book_to_skill.corpus",
+            "validate",
+            str(FIXTURE_DIR / "manifest.json"),
+        ],
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        timeout=30,
+        check=False,
+    )
+    assert result.returncode == 0, result.stderr
+    assert json.loads(result.stdout)["status"] == "valid"

@@ -338,6 +338,7 @@ import sys
 import claim_framework.ports
 import claim_framework.status
 assert 'book_to_skill' not in sys.modules
+assert 'corpus_to_skill' not in sys.modules
 assert 'claim_framework.evaluation' not in sys.modules
 assert 'claim_framework.prediction' not in sys.modules
 """

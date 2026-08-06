@@ -3,10 +3,9 @@ import tempfile
 from pathlib import Path
 
 OUTPUT_DIR = Path(
-    os.environ.get(
-        "BOOK_SKILL_WORKDIR",
-        str(Path(tempfile.gettempdir()) / "book_skill_work"),
-    )
+    os.environ.get("CORPUS_SKILL_WORKDIR")
+    or os.environ.get("BOOK_SKILL_WORKDIR")
+    or str(Path(tempfile.gettempdir()) / "book_skill_work")
 )
 OUTPUT_TEXT = OUTPUT_DIR / "full_text.txt"
 OUTPUT_META = OUTPUT_DIR / "metadata.json"

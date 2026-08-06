@@ -1,10 +1,11 @@
 # Architecture
 
-book-to-skill has two halves: a **deterministic extractor** (Python) and a
-**spec-driven generator** (the agent following `SKILL.md`). The extractor turns any
-document into clean text + metadata; the agent turns that into a structured skill.
+Corpus to Skill combines a **deterministic extractor** (Python), a
+**spec-driven generator** (the agent following `SKILL.md`), and an offline corpus
+compiler. The extractor turns documents into clean text + metadata; the agent or
+compiler turns that material into a structured skill.
 
-That established single-book path remains protected. A separate corpus path now
+The inherited document path remains protected. A separate corpus path now
 uses the domain-neutral `claim_framework` without redirecting legacy commands or
 outputs.
 
@@ -17,20 +18,20 @@ outputs.
      ▼      │    ├─ sanitize.py         strip invisible/zero-width Unicode    │
  ───────────│    └─ parsers/            pdf · epub · docx · html · rtf ·      │
             │                             calibre · text (best tool, fallback)│
-            │  output → <tempdir>/book_skill_work/                            │
+            │  output → $CORPUS_SKILL_WORKDIR/                                │
             │    full_text.txt   (all sources merged, source-marked)          │
             │    metadata.json   (pages, words, tokens, chapters, ToC)        │
             └────────────────────────────────────────────────────────────────┘
                                    │
                                    ▼
             ┌─────────────────────────── GENERATOR (agent, follows SKILL.md) ┐
-            │  Step 1.5  ask content type → BOOK_TYPE (technical | text)      │
+            │  Step 1.5  ask content type → CONTENT_TYPE (technical | text)   │
             │  Step 2/2.5 extract · cost estimate · confirm                   │
             │  Step 2.6  REPL-style probing for large books (grep/sed, no     │
             │            full re-reads)                                        │
             │  Step 3    analyze structure (title, author, chapters, ToC)     │
             │  Step 4    purpose → DEPTH (reference | study)                   │
-            │  Step 7    per-chapter summaries (budget = BOOK_TYPE × DEPTH)    │
+            │  Step 7    per-chapter summaries (budget = CONTENT_TYPE × DEPTH) │
             │  Step 8    glossary · patterns · cheatsheet (decision layer)    │
             │  Step 9/9.5 SKILL.md core + indexes                             │
             └────────────────────────────────────────────────────────────────┘
@@ -52,15 +53,15 @@ outputs.
 
 ```text
 manifest.json (2+ portable local sources)
-    -> book_to_skill.corpus.ingestion       checksummed sanitized text
-    -> book_to_skill.corpus.extraction      exact-offset SourceClaim records
+    -> corpus_to_skill.ingestion       checksummed sanitized text
+    -> corpus_to_skill.extraction      exact-offset SourceClaim records
     -> claim_framework.normalize            conservative canonical claims
     -> claim_framework.relationships        scoped relation classification
     -> claim_framework.synthesis            assertions, disputes, and gaps
-    -> book_to_skill.corpus.compiler         separate skill/<corpus-slug>/ tree
+    -> corpus_to_skill.compiler         separate skill/<corpus-slug>/ tree
 ```
 
-`python -m book_to_skill.corpus` and the `corpus-to-skill` console script expose
+`python -m corpus_to_skill` and the `corpus-to-skill` console script expose
 distinct `validate` and `build` commands. Intermediate ledgers and run records
 remain inspectable under the selected corpus output directory; the compiler
 verifies every rendered synthesis assertion against checksummed extracted text.
@@ -98,7 +99,7 @@ MVP/Phase 6-8 status and limits.
 | `book_to_skill/config.py` | supported extensions, output paths, dependency map |
 | `book_to_skill/dependencies.py` | optional-dependency probing + `--check` |
 | `book_to_skill/sanitize.py` | strips zero-width / Unicode-tag-block characters from extracted text (see Security) |
-| `book_to_skill/corpus/` | additive manifest ingestion, explicit claim extraction, orchestration, and corpus-skill compilation |
+| `corpus_to_skill/` | manifest ingestion, explicit claim extraction, orchestration, and corpus-skill compilation |
 | `claim_framework/` | domain-neutral versioned records, deterministic JSON/storage, claim reasoning, provenance, evaluation, and experimental predictive foundations |
 | `tools/discovery_tax.py` | measures token cost vs context-dump / discovery loop |
 | `tools/validate_skill.py` | checks a generated SKILL.md against host rules (`--lens claude\|copilot\|amp`) |

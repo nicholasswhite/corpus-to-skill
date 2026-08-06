@@ -1117,6 +1117,14 @@ class TestResolveInputFiles:
 class TestDependencyCheck:
     """Tests for the --check preflight (run_dependency_check)."""
 
+    def test_corpus_install_environment_takes_precedence(self, monkeypatch):
+        from book_to_skill.dependencies import normalize_install_mode
+
+        monkeypatch.setenv("BOOK_SKILL_INSTALL_MISSING", "yes")
+        monkeypatch.setenv("CORPUS_SKILL_INSTALL_MISSING", "no")
+
+        assert normalize_install_mode(["book-to-skill"]) == "no"
+
     def test_all_present_reports_ready(self, capsys):
         from book_to_skill.dependencies import run_dependency_check
 
