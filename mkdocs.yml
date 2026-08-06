@@ -47,6 +47,9 @@ nav:
   - Guide: guide.md
   - How it works: HOW_IT_WORKS.md
   - Usage: USAGE.md
+  - Corpus workflow: CORPUS_WORKFLOW.md
+  - Framework status & operations: FRAMEWORK_STATUS.md
+  - Legacy compatibility: LEGACY_COMPATIBILITY.md
   - Install: INSTALL.md
   - FAQ: FAQ.md
   - Architecture: ARCHITECTURE.md

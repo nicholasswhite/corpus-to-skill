@@ -35,6 +35,29 @@ In GitHub Copilot CLI you may need to run `/skills reload` after the file is wri
 
 ---
 
+## Additive corpus workflow
+
+Use the separate corpus command when two or more local sources need an
+inspectable source-claim ledger, exact locators, cross-source relationships, and
+a corpus-derived skill:
+
+```bash
+corpus-to-skill validate incident-corpus/manifest.json
+corpus-to-skill build incident-corpus/manifest.json --output corpus-build
+```
+
+The corpus command does not change `/book-to-skill` syntax or write into an
+existing legacy skill. Its current exact-offset adapter accepts local
+plain-text and Markdown-family sources; rich-document corpus adapters are not
+implemented yet.
+
+See [Corpus workflow](CORPUS_WORKFLOW.md) for the manifest v1 contract, module
+form, output artifacts, cache/update behavior, privacy guidance, and Phase 6-8
+status and limitations.
+
+Operational budgets, interruption recovery, safe cache rotation, schema upgrade
+rules, and the live/performance pytest gates are documented in
+[Framework status, compatibility, and operations](FRAMEWORK_STATUS.md).
 
 ---
 

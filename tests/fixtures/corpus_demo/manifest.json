@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "id": "resilient-queues-demo",
+  "name": "Resilient Queue Operations",
+  "domain_profile": "general@1.0",
+  "configuration_ref": "heuristic-claims-v1",
+  "created_at": "2026-01-01T00:00:00Z",
+  "source_entries": [
+    {
+      "source_id": "bounded-queues",
+      "input_ref": "bounded-queues.md",
+      "media_type": "text/markdown",
+      "metadata_overrides": {
+        "title": "Bounded Queue Operations",
+        "creators": ["Synthetic Author A"],
+        "rights_or_access_notes": "Original synthetic CC0 test fixture."
+      }
+    },
+    {
+      "source_id": "admission-control",
+      "input_ref": "admission-control.md",
+      "media_type": "text/markdown",
+      "metadata_overrides": {
+        "title": "Admission Control Notes",
+        "creators": ["Synthetic Author B"],
+        "rights_or_access_notes": "Original synthetic CC0 test fixture."
+      }
+    },
+    {
+      "source_id": "bursty-capacity",
+      "input_ref": "bursty-capacity.md",
+      "media_type": "text/markdown",
+      "metadata_overrides": {
+        "title": "Bursty Capacity Trade-offs",
+        "creators": ["Synthetic Author C"],
+        "rights_or_access_notes": "Original synthetic CC0 test fixture."
+      }
+    }
+  ]
+}

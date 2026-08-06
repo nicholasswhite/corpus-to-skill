@@ -12,6 +12,7 @@ license = { text = "MIT" }
 
 [project.scripts]
 book-to-skill = "book_to_skill.cli:main"
+corpus-to-skill = "book_to_skill.corpus.cli:main"
 
 [project.optional-dependencies]
 epub = ["ebooklib", "beautifulsoup4"]
@@ -40,3 +41,10 @@ select = ["E9", "F"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+markers = [
+    "live: opt-in test that may contact an external service, incur cost, or send data off-machine",
+    "performance: opt-in benchmark or resource-envelope test that is unsuitable for the default correctness gate",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["book_to_skill", "claim_framework"]

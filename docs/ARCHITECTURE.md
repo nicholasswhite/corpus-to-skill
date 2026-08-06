@@ -4,6 +4,10 @@ book-to-skill has two halves: a **deterministic extractor** (Python) and a
 **spec-driven generator** (the agent following `SKILL.md`). The extractor turns any
 document into clean text + metadata; the agent turns that into a structured skill.
 
+That established single-book path remains protected. A separate corpus path now
+uses the domain-neutral `claim_framework` without redirecting legacy commands or
+outputs.
+
 ```
             ┌─────────────────────────── EXTRACTOR (Python, deterministic) ──┐
  documents  │  scripts/extract.py (shim)  →  book_to_skill/                   │
@@ -44,6 +48,33 @@ document into clean text + metadata; the agent turns that into a structured skil
                   cheatsheet.md    decision rules / trees / trade-offs / tells
 ```
 
+## Additive corpus path
+
+```text
+manifest.json (2+ portable local sources)
+    -> book_to_skill.corpus.ingestion       checksummed sanitized text
+    -> book_to_skill.corpus.extraction      exact-offset SourceClaim records
+    -> claim_framework.normalize            conservative canonical claims
+    -> claim_framework.relationships        scoped relation classification
+    -> claim_framework.synthesis            assertions, disputes, and gaps
+    -> book_to_skill.corpus.compiler         separate skill/<corpus-slug>/ tree
+```
+
+`python -m book_to_skill.corpus` and the `corpus-to-skill` console script expose
+distinct `validate` and `build` commands. Intermediate ledgers and run records
+remain inspectable under the selected corpus output directory; the compiler
+verifies every rendered synthesis assertion against checksummed extracted text.
+The default path is offline and rules-based. Only source-claim extraction is
+content-addressed and cached; downstream reasoning and compilation rerun.
+
+The reusable core imports no book parsers or corpus orchestration. Its public
+claim, relationship, synthesis, storage, provenance, evaluation, and
+experimental predictive APIs can be used directly by non-book domains.
+Evaluation and prediction remain optional library layers; the corpus build does
+not run them implicitly. See [Corpus workflow](CORPUS_WORKFLOW.md) for the
+manifest, artifact tree, update behavior, schema policy, and explicit
+MVP/Phase 6-8 status and limits.
+
 ## Design principles
 
 1. **Extract structure, not summaries** — named frameworks, decision rules,
@@ -67,6 +98,8 @@ document into clean text + metadata; the agent turns that into a structured skil
 | `book_to_skill/config.py` | supported extensions, output paths, dependency map |
 | `book_to_skill/dependencies.py` | optional-dependency probing + `--check` |
 | `book_to_skill/sanitize.py` | strips zero-width / Unicode-tag-block characters from extracted text (see Security) |
+| `book_to_skill/corpus/` | additive manifest ingestion, explicit claim extraction, orchestration, and corpus-skill compilation |
+| `claim_framework/` | domain-neutral versioned records, deterministic JSON/storage, claim reasoning, provenance, evaluation, and experimental predictive foundations |
 | `tools/discovery_tax.py` | measures token cost vs context-dump / discovery loop |
 | `tools/validate_skill.py` | checks a generated SKILL.md against host rules (`--lens claude\|copilot\|amp`) |
 | `tools/scan_generated_skill.py` | advisory prompt-injection scan of a generated skill (see Security) |

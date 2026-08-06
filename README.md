@@ -27,6 +27,7 @@
   <a href="#-beyond-books">Beyond books</a> ·
   <a href="docs/HOW_IT_WORKS.md">How it works</a> ·
   <a href="docs/USAGE.md">Usage</a> ·
+  <a href="docs/CORPUS_WORKFLOW.md">Corpus workflow</a> ·
   <a href="docs/INSTALL.md">Install</a> ·
   <a href="docs/FAQ.md">FAQ</a> ·
   <a href="docs/PERFORMANCE.md">Performance</a> ·
@@ -116,6 +117,15 @@ Two halves: a deterministic Python **extractor** (document → clean text + meta
 `/book-to-skill <path|folder|glob> [skill-name]` — plus analyze-only, generate-from-analysis, and update/fold-in modes.
 
 ▶️ **All modes and examples → [docs/USAGE.md](docs/USAGE.md)**
+
+For two or more local text/Markdown sources that need claim ledgers, exact
+provenance, explicit disputes, and a separate output scope, use the additive
+`corpus-to-skill validate|build` CLI. It leaves the established single-book
+syntax and artifacts unchanged.
+
+📚 **Manifest, artifacts, updates, and current limitations → [docs/CORPUS_WORKFLOW.md](docs/CORPUS_WORKFLOW.md)**
+
+🧭 **Feature stability, schema upgrades, resource budgets, recovery, cache rotation, and opt-in tests → [docs/FRAMEWORK_STATUS.md](docs/FRAMEWORK_STATUS.md)**
 
 ---
 

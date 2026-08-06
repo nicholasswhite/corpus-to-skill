@@ -1,0 +1,621 @@
+{
+  "CorpusManifest": {
+    "id": "golden-corpus",
+    "name": "Golden compatibility corpus",
+    "source_entries": [
+      {
+        "source_id": "source-a",
+        "input_ref": "sources/a.md",
+        "media_type": "text/markdown",
+        "metadata_overrides": {
+          "creators": [
+            "Fixture Author A"
+          ],
+          "title": "Fixture source A"
+        }
+      },
+      {
+        "source_id": "source-b",
+        "input_ref": "sources/b.md",
+        "media_type": "text/markdown",
+        "metadata_overrides": {
+          "creators": [
+            "Fixture Author B"
+          ],
+          "title": "Fixture source B"
+        }
+      }
+    ],
+    "configuration_ref": "golden-config-v1",
+    "created_at": "2026-01-01T00:00:00Z",
+    "domain_profile": "general@1.0",
+    "schema_version": "1.0"
+  },
+  "SourceRecord": {
+    "id": "source-record-a",
+    "corpus_id": "golden-corpus",
+    "title": "Fixture source A",
+    "creators": [
+      "Fixture Author A"
+    ],
+    "media_type": "text/markdown",
+    "source_ref": "sources/a.md",
+    "content_checksum": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+    "parser_name": "fixture-text",
+    "parser_version": "1.0.0",
+    "ingestion_run_id": "run-ingest-v1",
+    "extracted_text_ref": "artifacts/extracted/source-record-a.txt",
+    "extracted_text_checksum": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "edition": "first",
+    "publication_date": "2025-12-01",
+    "rights_or_access_notes": "Synthetic fixture; unrestricted test use.",
+    "schema_version": "1.0"
+  },
+  "RunRecord": {
+    "id": "run-ingest-v1",
+    "stage": "ingest",
+    "implementation_version": "fixture-ingester-v1",
+    "schema_versions": {
+      "claim_framework": "1.0"
+    },
+    "configuration_hash": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+    "input_artifact_ids": [
+      "source-entry-a"
+    ],
+    "started_at": "2026-01-01T00:00:00Z",
+    "status": "completed",
+    "completed_at": "2026-01-01T00:00:01Z",
+    "model_or_tool": "fixture-text",
+    "prompt_or_ruleset_version": "rules-v1",
+    "limitations": [
+      "Synthetic compatibility fixture."
+    ],
+    "schema_version": "1.0"
+  },
+  "SourceClaim": {
+    "id": "source-claim-a",
+    "source_id": "source-record-a",
+    "source_spans": [
+      {
+        "source_id": "source-record-a",
+        "locator": {
+          "page": null,
+          "chapter": "Fixture chapter",
+          "section": "Queue policy",
+          "paragraph": 1,
+          "start_offset": 0,
+          "end_offset": 36
+        },
+        "excerpt": "Bounded queues reduce overload risk.",
+        "excerpt_checksum": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb"
+      }
+    ],
+    "original_assertion": "Bounded queues reduce overload risk.",
+    "proposition": "Bounded queues reduce overload risk.",
+    "claim_type": "descriptive",
+    "semantics": {
+      "subject": "bounded queues",
+      "relation": "reduce",
+      "object_or_value": "overload risk",
+      "polarity": "positive",
+      "quantifier": "some",
+      "modality": "can",
+      "population": "request-processing services",
+      "geography": "global",
+      "temporal_scope": "during load spikes",
+      "definitions": {
+        "bounded queue": "a queue with a fixed capacity"
+      },
+      "assumptions": [
+        "admission control is enabled"
+      ],
+      "conditions": [
+        {
+          "field": "queue_capacity",
+          "operator": "greater_than",
+          "value": 0
+        }
+      ],
+      "objective": "service stability",
+      "outcome": {
+        "direction": "below",
+        "metric": "overload_events",
+        "threshold": 1,
+        "unit": "events"
+      },
+      "time_horizon": "one hour"
+    },
+    "extraction": {
+      "run_id": "run-extract-v1",
+      "review_status": "accepted",
+      "extraction_confidence": 0.95,
+      "safety_finding_ids": []
+    },
+    "evidence_refs": [
+      "evidence-a"
+    ],
+    "author_confidence": {
+      "label": "high",
+      "stated_explicitly": true
+    },
+    "schema_version": "1.0"
+  },
+  "CanonicalClaim": {
+    "id": "canonical-claim-a",
+    "canonical_proposition": "Bounded queues reduce overload risk.",
+    "claim_type": "descriptive",
+    "semantics": {
+      "subject": "bounded queues",
+      "relation": "reduce",
+      "object_or_value": "overload risk",
+      "polarity": "positive",
+      "quantifier": "some",
+      "modality": "can",
+      "population": "request-processing services",
+      "geography": "global",
+      "temporal_scope": "during load spikes",
+      "definitions": {
+        "bounded queue": "a queue with a fixed capacity"
+      },
+      "assumptions": [
+        "admission control is enabled"
+      ],
+      "conditions": [
+        {
+          "field": "queue_capacity",
+          "operator": "greater_than",
+          "value": 0
+        }
+      ],
+      "objective": "service stability",
+      "outcome": {
+        "direction": "below",
+        "metric": "overload_events",
+        "threshold": 1,
+        "unit": "events"
+      },
+      "time_horizon": "one hour"
+    },
+    "member_source_claim_ids": [
+      "source-claim-a"
+    ],
+    "preserved_variants": [
+      "Bounded queues reduce overload risk."
+    ],
+    "normalization_rationale": "The source-faithful proposition and scope match.",
+    "normalization_run_id": "run-normalize-v1",
+    "status": "active",
+    "review_status": "accepted",
+    "schema_version": "1.0"
+  },
+  "EvidenceRecord": {
+    "id": "evidence-a",
+    "source_claim_id": "source-claim-a",
+    "evidence_type": "observational",
+    "direction": "supports",
+    "description": "A synthetic observation linked to the source claim.",
+    "cited_source_refs": [
+      "fixture://observation-a"
+    ],
+    "source_spans": [
+      {
+        "source_id": "source-record-a",
+        "locator": {
+          "page": null,
+          "chapter": "Fixture chapter",
+          "section": "Queue policy",
+          "paragraph": 1,
+          "start_offset": 0,
+          "end_offset": 36
+        },
+        "excerpt": "Bounded queues reduce overload risk.",
+        "excerpt_checksum": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb"
+      }
+    ],
+    "independence_group": "fixture-study-a",
+    "limitations": [
+      "Synthetic evidence; not an empirical result."
+    ],
+    "schema_version": "1.0"
+  },
+  "ClaimRelation": {
+    "id": "claim-relation-a-b",
+    "left_claim_id": "canonical-claim-a",
+    "right_claim_id": "canonical-claim-b",
+    "relation_type": "support",
+    "directionality": "left_to_right",
+    "scope_analysis": {
+      "term_definition_alignment": "aligned",
+      "population_overlap": "same",
+      "temporal_overlap": "same",
+      "condition_overlap": "partial",
+      "objective_alignment": "aligned",
+      "shared_conditions": [
+        {
+          "field": "load_state",
+          "operator": "is",
+          "value": "elevated"
+        }
+      ],
+      "left_only_conditions": [],
+      "right_only_conditions": [
+        {
+          "field": "spare_capacity",
+          "operator": "is",
+          "value": "low"
+        }
+      ]
+    },
+    "conflict_dimensions": [],
+    "rationale": "Reviewed evidence establishes directional support.",
+    "supporting_source_claim_ids": [
+      "source-claim-a",
+      "source-claim-b"
+    ],
+    "classification": {
+      "run_id": "run-relate-v1",
+      "review_status": "corrected",
+      "classifier_confidence": null
+    },
+    "human_override": {
+      "field": "relation_type",
+      "prior_value": "agreement",
+      "new_value": "support",
+      "reviewer": "fixture-reviewer",
+      "timestamp": "2026-01-01T00:05:00Z",
+      "reason": "The reviewed evidence is directional rather than symmetric.",
+      "prior_record_id": "claim-relation-before-review"
+    },
+    "schema_version": "1.0"
+  },
+  "ClaimGraphSnapshot": {
+    "id": "claim-graph-v1",
+    "corpus_id": "golden-corpus",
+    "canonical_claim_ids": [
+      "canonical-claim-a",
+      "canonical-claim-b"
+    ],
+    "relation_ids": [
+      "claim-relation-a-b"
+    ],
+    "run_id": "run-relate-v1",
+    "schema_version": "1.0"
+  },
+  "SynthesisAssertion": {
+    "id": "synthesis-assertion-a",
+    "text": "Use bounded queues to reduce overload risk during load spikes.",
+    "status": "consensus",
+    "canonical_claim_ids": [
+      "canonical-claim-a"
+    ],
+    "supporting_source_claim_ids": [
+      "source-claim-a"
+    ],
+    "opposing_source_claim_ids": [],
+    "rationale": "Independent fixture support is recorded; this is not a truth score.",
+    "condition_summary": "load_state is elevated",
+    "schema_version": "1.0"
+  },
+  "DisputeRecord": {
+    "id": "dispute-a-b",
+    "topic": "Queue admission policy",
+    "position_claim_ids": [
+      "canonical-claim-a",
+      "canonical-claim-b"
+    ],
+    "conflict_type": "conditional_disagreement",
+    "shared_assumptions": [
+      "requests may be rejected"
+    ],
+    "differing_assumptions": [
+      "spare capacity is available"
+    ],
+    "key_variables": [
+      "load_state",
+      "spare_capacity"
+    ],
+    "status": "reconciled_conditionally",
+    "reconciliation": "Apply each position only under its recorded conditions.",
+    "schema_version": "1.0"
+  },
+  "SynthesisGap": {
+    "id": "synthesis-gap-a",
+    "text": "The overload threshold needs independent measurement.",
+    "related_claim_ids": [
+      "canonical-claim-a"
+    ],
+    "schema_version": "1.0"
+  },
+  "TopicCluster": {
+    "id": "topic-cluster-a",
+    "topic": "Queue admission policy",
+    "canonical_claim_ids": [
+      "canonical-claim-a"
+    ],
+    "assertion_ids": [
+      "synthesis-assertion-a"
+    ],
+    "schema_version": "1.0"
+  },
+  "SynthesisArtifact": {
+    "id": "synthesis-artifact-v1",
+    "corpus_id": "golden-corpus",
+    "topic_clusters": [
+      {
+        "id": "topic-cluster-a",
+        "topic": "Queue admission policy",
+        "canonical_claim_ids": [
+          "canonical-claim-a"
+        ],
+        "assertion_ids": [
+          "synthesis-assertion-a"
+        ],
+        "schema_version": "1.0"
+      }
+    ],
+    "assertions": [
+      {
+        "id": "synthesis-assertion-a",
+        "text": "Use bounded queues to reduce overload risk during load spikes.",
+        "status": "consensus",
+        "canonical_claim_ids": [
+          "canonical-claim-a"
+        ],
+        "supporting_source_claim_ids": [
+          "source-claim-a"
+        ],
+        "opposing_source_claim_ids": [],
+        "rationale": "Independent fixture support is recorded; this is not a truth score.",
+        "condition_summary": "load_state is elevated",
+        "schema_version": "1.0"
+      }
+    ],
+    "disputes": [
+      {
+        "id": "dispute-a-b",
+        "topic": "Queue admission policy",
+        "position_claim_ids": [
+          "canonical-claim-a",
+          "canonical-claim-b"
+        ],
+        "conflict_type": "conditional_disagreement",
+        "shared_assumptions": [
+          "requests may be rejected"
+        ],
+        "differing_assumptions": [
+          "spare capacity is available"
+        ],
+        "key_variables": [
+          "load_state",
+          "spare_capacity"
+        ],
+        "status": "reconciled_conditionally",
+        "reconciliation": "Apply each position only under its recorded conditions.",
+        "schema_version": "1.0"
+      }
+    ],
+    "unresolved_questions": [
+      {
+        "id": "synthesis-gap-a",
+        "text": "The overload threshold needs independent measurement.",
+        "related_claim_ids": [
+          "canonical-claim-a"
+        ],
+        "schema_version": "1.0"
+      }
+    ],
+    "coverage_notes": [
+      "This artifact is a synthetic v1 compatibility fixture."
+    ],
+    "run_id": "run-synthesize-v1",
+    "schema_version": "1.0"
+  },
+  "SkillBuildManifest": {
+    "id": "skill-build-v1",
+    "corpus_id": "golden-corpus",
+    "source_record_ids": [
+      "source-record-a",
+      "source-record-b"
+    ],
+    "synthesis_artifact_id": "synthesis-artifact-v1",
+    "included_claim_ids": [
+      "canonical-claim-a"
+    ],
+    "unresolved_dispute_ids": [],
+    "compiler_version": "fixture-compiler-v1",
+    "configuration_hash": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+    "generated_at": "2026-01-01T00:10:00Z",
+    "output_checksums": {
+      "skill/golden/SKILL.md": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "domain_profile_id_and_version": "general@1.0",
+    "schema_version": "1.0"
+  },
+  "MetricDefinition": {
+    "id": "overload_events",
+    "description": "Count of overload events in the evaluation window.",
+    "unit": "events",
+    "metadata": {
+      "minimum": 0,
+      "value_type": "integer"
+    },
+    "schema_version": "1.0"
+  },
+  "DomainProfile": {
+    "id": "general",
+    "version": "1.0.0",
+    "condition_fields": [
+      "load_state",
+      "spare_capacity"
+    ],
+    "metric_definitions": [
+      {
+        "id": "overload_events",
+        "description": "Count of overload events in the evaluation window.",
+        "unit": "events",
+        "metadata": {
+          "minimum": 0,
+          "value_type": "integer"
+        },
+        "schema_version": "1.0"
+      }
+    ],
+    "evidence_rubric_refs": [
+      "rubric://general-evidence@1.0"
+    ],
+    "outcome_resolver_refs": [
+      "resolver://fixture-outcomes@1.0"
+    ],
+    "vocabulary_ref": "profiles/general/vocabulary-v1.json",
+    "ontology_ref": "profiles/general/ontology-v1.json",
+    "predictive_eligibility_rules_ref": "profiles/general/prediction-rules-v1.json",
+    "skill_template_ref": "profiles/general/skill-template-v1.md",
+    "schema_version": "1.0"
+  },
+  "EvaluationDimension": {
+    "id": "provenance_completeness",
+    "question": "What proportion of material assertions resolves to sources?",
+    "scale": {
+      "anchors": {
+        "0": "none resolve",
+        "1": "all resolve"
+      },
+      "maximum": 1.0,
+      "minimum": 0.0
+    },
+    "weight": 1.0,
+    "missing_policy": "unknown",
+    "schema_version": "1.0"
+  },
+  "EvaluationRubric": {
+    "id": "provenance-rubric",
+    "version": "1.0.0",
+    "target_type": "synthesis",
+    "dimensions": [
+      {
+        "id": "provenance_completeness",
+        "question": "What proportion of material assertions resolves to sources?",
+        "scale": {
+          "anchors": {
+            "0": "none resolve",
+            "1": "all resolve"
+          },
+          "maximum": 1.0,
+          "minimum": 0.0
+        },
+        "weight": 1.0,
+        "missing_policy": "unknown",
+        "schema_version": "1.0"
+      }
+    ],
+    "aggregation_method": "weighted_mean:v1",
+    "schema_version": "1.0"
+  },
+  "DimensionAssessment": {
+    "dimension_id": "provenance_completeness",
+    "status": "assessed",
+    "rationale": "The fixture assertion has a source claim reference.",
+    "score": 1.0,
+    "evidence_refs": [
+      "synthesis-assertion-a"
+    ],
+    "uncertainty": {
+      "kind": "synthetic_fixture",
+      "value": 0.0
+    },
+    "schema_version": "1.0"
+  },
+  "EvaluationRecord": {
+    "id": "evaluation-record-v1",
+    "target_ref": "synthesis-artifact-v1",
+    "rubric_id": "provenance-rubric",
+    "rubric_version": "1.0.0",
+    "dimensions": [
+      {
+        "dimension_id": "provenance_completeness",
+        "status": "assessed",
+        "rationale": "The fixture assertion has a source claim reference.",
+        "score": 1.0,
+        "evidence_refs": [
+          "synthesis-assertion-a"
+        ],
+        "uncertainty": {
+          "kind": "synthetic_fixture",
+          "value": 0.0
+        },
+        "schema_version": "1.0"
+      }
+    ],
+    "run_id": "run-evaluate-v1",
+    "aggregate_score": 1.0,
+    "reviewer": "fixture-reviewer",
+    "aggregation_method": "weighted_mean:v1",
+    "component_weights": {
+      "provenance_completeness": 1.0
+    },
+    "aggregate_component_ids": [
+      "provenance_completeness"
+    ],
+    "schema_version": "1.0"
+  },
+  "EligibilityResult": {
+    "canonical_claim_id": "canonical-claim-a",
+    "status": "eligible",
+    "reasons": [],
+    "schema_version": "1.0"
+  },
+  "PredictionSpec": {
+    "id": "prediction-spec-v1",
+    "canonical_claim_id": "canonical-claim-a",
+    "target_metric": "overload_events",
+    "probability_or_forecast": 0.75,
+    "issue_or_information_cutoff_time": "2026-01-01T00:00:00Z",
+    "evaluation_window": {
+      "start": "2026-01-02T00:00:00Z",
+      "end": "2026-01-03T00:00:00Z"
+    },
+    "outcome_data_source": "fixture://authorized-outcomes-v1",
+    "resolution_rule": "Resolve true when overload_events is below 1.",
+    "scoring_rule": "brier",
+    "status": "draft",
+    "population": "request-processing services",
+    "direction": "below",
+    "threshold": 1,
+    "unit": "events",
+    "benchmark_or_base_rate": 0.5,
+    "frozen_content_hash": null,
+    "registered_at": null,
+    "version": 1,
+    "supersedes_prediction_spec_id": null,
+    "status_reason": null,
+    "schema_version": "1.0"
+  },
+  "OutcomeObservation": {
+    "id": "outcome-observation-v1",
+    "prediction_spec_id": "prediction-spec-v1",
+    "observed_at": "2026-01-02T12:00:00Z",
+    "value": 0,
+    "source_ref": "fixture://authorized-outcomes-v1",
+    "collection_run_id": "run-collect-v1",
+    "source_checksum": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+    "schema_version": "1.0"
+  },
+  "PredictiveScore": {
+    "id": "predictive-score-v1",
+    "prediction_spec_id": "prediction-spec-v1",
+    "outcome_observation_ids": [
+      "outcome-observation-v1"
+    ],
+    "metric": "brier",
+    "value": 0.0625,
+    "benchmark_value": 0.25,
+    "sample_size": 1,
+    "uncertainty": null,
+    "scoring_method_version": "domain-neutral-v1",
+    "scored_at": "2026-01-03T01:00:00Z",
+    "run_id": "run-score-v1",
+    "status": "resolved",
+    "reason": null,
+    "schema_version": "1.0"
+  }
+}
