@@ -1,267 +1,240 @@
-<p align="center">
-  <img src="docs/assets/logo.png" alt="book-to-skill logo" width="120">
-</p>
+# Book to Skill
 
-<h1 align="center">book-to-skill</h1>
+**A document-to-Agent-Skill toolkit:** turn supported documents into Agent
+Skills, or compile a constrained local text corpus into a source-traceable
+skill.
 
-<p align="center">
-  <strong>Turn any technical book, document folder, or collection of sources into a unified agent skill — ready to study, reference, and use while you work in GitHub Copilot CLI, Amp, or Claude Code.</strong>
-</p>
+For agent users who repeatedly consult source material, developers who need
+local extraction, and advanced users with deliberately structured multi-source
+text corpora.
 
-<p align="center">
-  <a href="https://github.com/nicholasswhite/book-to-skill/releases"><img src="https://img.shields.io/github/v/release/nicholasswhite/book-to-skill?style=for-the-badge&color=blueviolet" alt="Latest release"></a>
-  <img src="https://img.shields.io/badge/Agent_Skills-Open_Standard-blueviolet?style=for-the-badge" alt="Agent Skills standard">
-  <img src="https://img.shields.io/badge/PDF%20%E2%80%A2%20EPUB%20%E2%80%A2%20DOCX%20%E2%80%A2%20MD%20%E2%80%A2%20HTML%20%E2%80%A2%20RTF%20%E2%80%A2%20MOBI-supported-green?style=for-the-badge" alt="Formats supported">
-  <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="MIT License">
-  <a href="https://github.com/sponsors/virgiliojr94"><img src="https://img.shields.io/github/sponsors/virgiliojr94?style=for-the-badge&color=ea4aaa&logo=githubsponsors&logoColor=white" alt="Support the original creator"></a>
-</p>
+The extractor and host-agent workflow are established. The local corpus
+compiler is a working, bounded text/Markdown MVP. Evaluation and prediction are
+experimental; richer adapters are scaffolded.
 
-> [!NOTE]
-> **Project lineage:** This repository is an independently maintained derivative
-> of [Virgilio Junior's original `book-to-skill` project](https://github.com/virgiliojr94/book-to-skill).
-> It is not affiliated with or maintained by the original project. Original
-> authorship remains credited in the Git history and MIT license; subsequent
-> changes are maintained in this repository.
+**Compatibility.** Existing identifiers stay `book-to-skill`, `book_to_skill`,
+`/book-to-skill`, `corpus-to-skill`, and `claim_framework`.
 
-<p align="center">
-  <a href="#-why">Why</a> ·
-  <a href="#-what-it-generates">What it generates</a> ·
-  <a href="#-beyond-books">Beyond books</a> ·
-  <a href="docs/HOW_IT_WORKS.md">How it works</a> ·
-  <a href="docs/USAGE.md">Usage</a> ·
-  <a href="docs/CORPUS_WORKFLOW.md">Corpus workflow</a> ·
-  <a href="docs/INSTALL.md">Install</a> ·
-  <a href="docs/FAQ.md">FAQ</a> ·
-  <a href="docs/PERFORMANCE.md">Performance</a> ·
-  <a href="docs/ARCHITECTURE.md">Architecture</a> ·
-  <a href="CHANGELOG.md">Changelog</a>
-</p>
+**Lineage.** This independent derivative builds on [Virgilio Junior's original
+`book-to-skill`](https://github.com/virgiliojr94/book-to-skill) root Agent Skill
+workflow and extractor; the corpus compiler and claim-framework direction are
+additions here.
 
-<p align="center">
-  <strong>24×–51× fewer tokens than dumping the book into context</strong> to answer one question, measured on real books (<a href="docs/PERFORMANCE.md#the-discovery-loop-tax">how it's measured</a>).
-</p>
+## Quickstart: build a corpus skill
 
-**How it works, in 3 steps:**
-
-1. **Point** it at a file, folder, or glob — `/book-to-skill ./my-book.pdf`
-2. **It distills** the book into a skill — frameworks, decision rules, anti-patterns, and per-chapter files. Structure, not a summary.
-3. **Your agent loads it on demand** — ask `/my-book replication` and it reads the right chapter and answers from the real content, no hallucination.
-
----
-
-## 🤔 Why
-
-<img align="right" width="200" src="docs/assets/booklin.png" alt="Booklin — the book-to-skill mascot, a purple wizard holding a book">
-
-You buy a great technical book. You read it once. Three months later you can't remember chapter 7 existed.
-
-The usual workarounds don't help:
-- 📄 "Let me just search the PDF" → you get a list of pages, not answers
-- 🧠 "I'll ask the agent about this book" → it either hallucinates or says it doesn't have the content
-- 📝 "I'll take notes as I read" → you end up with a 200-line doc you never open again
-
-**book-to-skill solves this by turning the book into a structured skill your agent loads on demand.**
-
-Once installed, you just type `/your-book-slug replication` and the agent reads the right chapter and answers from the actual content. No hallucination. No digging through PDFs. The book becomes part of your workflow.
-
-Works with any host that supports the open [Agent Skills](https://github.com/agentskills/agentskills) standard — GitHub Copilot CLI, Amp, and Claude Code all read the same `SKILL.md` format.
-
----
-
-## 📦 What it generates
-
-Running `/book-to-skill your-book.pdf` (or a folder, glob, or list of files) creates a full skill in your agent's skills directory (`~/.copilot/skills/<slug>/` for Copilot CLI, `~/.agents/skills/<slug>/` for Amp or cross-agent, `~/.claude/skills/<slug>/` for Claude Code):
-
-| File | Purpose | Size |
-|------|---------|------|
-| `SKILL.md` | Core mental models + chapter index | ~4,000 tokens |
-| `chapters/ch01-*.md` … | One file per chapter, loaded on-demand | ~1,000 tokens each |
-| `glossary.md` | Every key term, alphabetically sorted with chapter refs | ~1,500 tokens |
-| `patterns.md` | All techniques, algorithms, and design patterns | ~2,000 tokens |
-| `cheatsheet.md` | Decision tables and quick-reference rules | ~1,000 tokens |
-
-**Chapter files are loaded on-demand** — they don't count against the skill budget until you ask about that topic.
-
----
-
-## 🏢 Beyond books
-
-The name says "book", but the input is any structured prose. The same extraction works on knowledge you own and re-read constantly:
-
-- **Internal documentation** — architecture decision records, runbooks, onboarding guides. Fold a whole `docs/` folder into one skill and ask it while you code.
-- **Brand & design systems** — voice guidelines, tone-of-voice docs, component principles. Turn a brand book into a skill your team queries instead of skimming a 60-page PDF.
-- **Research clusters** — a stack of papers plus your own notes, merged into a single unified skill and updated as new material lands (see [Update / fold-in](#-usage)).
-- **Specs & standards** — RFCs, API contracts, compliance docs you reference but never memorize.
-
-If you re-open a document often enough to wish you'd memorized it, it's a candidate.
-
----
-
-
-## 🧾 The Discovery Loop Tax
-
-A PDF-reading agent doesn't just read — it *navigates*: it re-fetches the ToC, backtracks, and re-processes all of it on every turn. book-to-skill pays that structuring cost **once**, at conversion, so queries stay proportional to the answer — **24×–51× fewer tokens** than dumping the book into context, measured on real books.
-
-📊 **Full methodology, numbers, and per-book tables → [docs/PERFORMANCE.md](docs/PERFORMANCE.md#the-discovery-loop-tax)**
-
----
-
-## ⚙️ How it works
-
-Two halves: a deterministic Python **extractor** (document → clean text + metadata) and a spec-driven **generator** (your agent follows `SKILL.md` to turn that into a structured skill). On-demand chapter files keep the loaded skill small.
-
-🔧 **Full walkthrough (Steps 0–10, extraction modes, token budgets) → [docs/HOW_IT_WORKS.md](docs/HOW_IT_WORKS.md)**
-
----
-
-## 🚀 Usage
-
-`/book-to-skill <path|folder|glob> [skill-name]` — plus analyze-only, generate-from-analysis, and update/fold-in modes.
-
-▶️ **All modes and examples → [docs/USAGE.md](docs/USAGE.md)**
-
-For two or more local text/Markdown sources that need claim ledgers, exact
-provenance, explicit disputes, and a separate output scope, use the additive
-`corpus-to-skill validate|build` CLI. It leaves the established single-book
-syntax and artifacts unchanged.
-
-📚 **Manifest, artifacts, updates, and current limitations → [docs/CORPUS_WORKFLOW.md](docs/CORPUS_WORKFLOW.md)**
-
-🧭 **Feature stability, schema upgrades, resource budgets, recovery, cache rotation, and opt-in tests → [docs/FRAMEWORK_STATUS.md](docs/FRAMEWORK_STATUS.md)**
-
----
-
-## 📥 Install
+Prerequisites: Git and Python 3.9 or newer. In a fresh checkout:
 
 ```bash
-# Agent skill (registers /book-to-skill) — clone into your skills folder:
-git clone https://github.com/nicholasswhite/book-to-skill.git ~/.claude/skills/book-to-skill
-# (Copilot CLI: ~/.copilot/skills/ · Amp/cross-agent: ~/.agents/skills/)
+git clone https://github.com/nicholasswhite/book-to-skill.git
+cd book-to-skill
+python -m pip install .
+corpus-to-skill build tests/fixtures/corpus_demo/manifest.json --output corpus-build
 ```
 
-📥 **All hosts, optional extractors, and the standalone CLI → [docs/INSTALL.md](docs/INSTALL.md)**
+The bundled example uses three synthetic Markdown sources about queue
+operations. The verified build produces 9 source claims, 7 canonical claims,
+3 relations, inspectable ledgers, and an Agent Skill tree under
+`corpus-build/skill/`. The built-in corpus path makes zero model calls and needs
+no service credentials.
 
----
+## Choose a path
 
-## ❓ FAQ
+Book to Skill has two workflows and one reusable extraction utility. They do not
+share the same inputs, outputs, provenance, or model behavior.
 
-Common questions — "why not just dump the PDF?", cost, privacy, non-book inputs, multi-file books.
+- **Host-agent document workflow:** Give `/book-to-skill` one or more supported
+  document files, folders, or globs. A compatible host agent uses the extractor,
+  analyzes the material, and authors a layered Agent Skill.
+- **Local corpus workflow:** Give `corpus-to-skill` a manifest with at least two
+  successfully ingested relative local text/Markdown-family sources. It emits
+  claim and relation ledgers, synthesis and traceability records, and a generated
+  Agent Skill tree.
+- **Standalone extraction utility:** Use `book-to-skill` directly with PDF,
+  EPUB, DOCX, HTML, RTF, text/Markdown-family files, or Calibre-supported
+  MOBI/AZW files. It writes only `full_text.txt` and `metadata.json`; it is not a
+  third synthesis workflow or a finished Agent Skill.
 
-❓ **Answers → [docs/FAQ.md](docs/FAQ.md)**
+## Install and use
 
----
+This checkout declares `book-to-skill` 1.3.0 and Python 3.9 or newer.
 
-<details>
-<summary>🔧 <strong>Requirements</strong></summary>
+### Host-agent document workflow
 
+Clone this repository into an Agent Skill directory discovered by your host.
+Discovery remains host-dependent; use a compatible skill root listed in
+`SKILL.md` and consult your host's documentation for setup details. The root
+[`SKILL.md`](SKILL.md) defines the host-dependent
+`/book-to-skill <path-to-document-folder-or-glob>... [skill-name-slug]`
+workflow. The host agent runs the extractor, analyzes the material, and writes
+the layered skill.
 
-The extractor tries tools in order per format and uses the first available. If nothing is installed, it tells you which command to run. Plain text, Markdown, reStructuredText and AsciiDoc need no extra deps.
+Installing the Python distribution alone does **not** register this Agent Skill.
+Generation quality, model use, and reproducibility depend on the host agent; the
+standalone Python CLI does not perform that synthesis.
 
-> **Check your setup in one command:** `python3 scripts/extract.py --check` prints which extractors are installed for every format and the exact command to install anything missing — no file needed.
+### Standalone extraction CLI
 
-**PDF — choose by book type:**
+The base installation handles the built-in text path and dependency-free
+fallbacks where available. Install the common Python backends for PDF, EPUB,
+DOCX, and RTF with:
 
-| Book type | Tool | Install | Speed |
-|-----------|------|---------|-------|
-| Text-heavy (prose, few tables) | `pdftotext` (poppler) | `sudo apt install poppler-utils` | ⚡ instant |
-| Text-heavy fallback | `pypdf` | `pip3 install pypdf` | ⚡ instant |
-| Text-heavy fallback | `pdfminer.six` | `pip3 install pdfminer.six` | ⚡ instant |
-| **Technical (code, tables, formulas)** | **`docling`** | `pip3 install docling` | ~1.5s/page |
-
-> Before extraction begins, the skill asks you whether the book is **technical** or **text-heavy** and picks the right tool automatically. Docling preserves markdown tables and code blocks; pdftotext is faster for prose-only books.
-
-**EPUB:**
-
-| Tool | Install | Quality |
-|------|---------|---------|
-| `ebooklib` + `beautifulsoup4` | `pip3 install ebooklib beautifulsoup4` | ⭐⭐⭐ Best |
-| stdlib `zipfile` | built-in — no install needed | ⭐⭐ Always available |
-
-**Other formats:**
-
-| Format | Tool | Install |
-|--------|------|---------|
-| DOCX | `python-docx` (fallback: stdlib ZIP/XML) | `pip3 install python-docx` |
-| HTML | `beautifulsoup4` (fallback: stdlib `html.parser`) | `pip3 install beautifulsoup4` |
-| RTF | `striprtf` (fallback: regex) | `pip3 install striprtf` |
-| MOBI / AZW / AZW3 | Calibre `ebook-convert` (external app, not pip) | https://calibre-ebook.com/download |
-| TXT / Markdown / reStructuredText / AsciiDoc | built-in | — |
-
----
-
-
-</details>
-
-<details>
-<summary>📁 <strong>Repository structure</strong></summary>
-
-
-```
-book-to-skill/
-├── SKILL.md              # Skill definition + step-by-step instructions (the generator spec)
-├── scripts/
-│   ├── extract.py        # Thin entrypoint wrapper
-│   └── extractor/        # Modular extraction package
-│       ├── config.py     # Extensions, paths, dependency constants
-│       ├── dependencies.py  # optional-dep probing + --check
-│       ├── exceptions.py # ExtractionError (per-source failures, batch-safe)
-│       ├── utils.py      # CLI parsing, multi-source resolution, chapter detection, runner
-│       └── parsers/      # Format-specific parsers (pdf, epub, docx, html, rtf, calibre, text)
-├── tools/
-│   ├── discovery_tax.py  # measures token cost vs context-dump / discovery loop
-│   └── validate_skill.py # checks a generated SKILL.md against host rules (--lens claude|copilot|amp)
-├── tests/                # pytest suite (extraction, detection, discovery tax)
-├── docs/
-│   ├── PERFORMANCE.md    # measured benchmarks, discovery tax, cost
-│   └── ARCHITECTURE.md   # pipeline + component map
-├── CHANGELOG.md          # release history (semver)
-├── CONTRIBUTING.md       # dev setup, PR conventions, release process
-├── SECURITY.md           # vulnerability reporting
-└── README.md             # This file
+```bash
+python -m pip install ".[pdf,epub,docx,rtf]"
 ```
 
----
+The declared extras are `pdf`, `epub`, `docx`, `rtf`, `technical`, and `all`.
+The `technical` extra adds Docling, while `all` aggregates every Python backend.
+MOBI/AZW extraction instead requires the external Calibre `ebook-convert`
+program. Rich formats differ in their dependencies and extraction quality.
 
+```bash
+book-to-skill --check
+book-to-skill tests/fixtures/corpus_demo/bounded-queues.md
+```
 
-</details>
+The second command extracts one local Markdown fixture. It writes consolidated
+UTF-8 `full_text.txt` and `metadata.json` under `BOOK_SKILL_WORKDIR`, when set,
+or under the system temporary `book_skill_work` directory. These files are
+intermediates, not a generated skill or a provenance graph.
 
----
-## ⚖️ Copyright & fair use
+The same CLI is exposed by the `book_to_skill` module and accepts the same input
+paths and flags as the console script. See
+[`docs/LEGACY_COMPATIBILITY.md`](docs/LEGACY_COMPATIBILITY.md) for the protected
+CLI and Python API contract.
 
-book-to-skill ships **no book content** — not a single page. It's a converter you point at files you already own.
+### Manifest-driven corpus compiler
 
-- **Processing is local.** Extraction and analysis run on your machine. Your files are never uploaded by this tool. (If your agent's model runs in the cloud, the text you feed it follows that provider's normal data terms — same as any prompt.)
-- **You use your own copy.** Bring a book you bought, docs your company owns, or papers you have the right to read.
-- **The output is your notes.** A generated skill is a structured, synthesized derivative — framework names, definitions, takeaways — not a reproduction of the text. The skill explicitly never copies raw passages (see Quality Rule #7). Treat it like handwritten study notes: yours, for personal use.
-- **Don't redistribute.** Publishing or sharing a generated skill of a copyrighted work can infringe the rights holder. Keep skills of third-party books private. Internal docs, your own writing, and openly-licensed material are fine to share within the bounds of their license.
+A corpus manifest uses schema version `1.0`, declares at least two sources, and
+refers to them with portable paths relative to the manifest. The current path
+accepts `.txt`, `.text`, `.md`, `.markdown`, `.rst`, `.adoc`, and `.asciidoc`.
 
-When in doubt, follow the license or terms of the source document. This project is a tool; how you use it is on you.
+```bash
+corpus-to-skill validate tests/fixtures/corpus_demo/manifest.json
+corpus-to-skill build tests/fixtures/corpus_demo/manifest.json --output corpus-build
+```
 
----
+`validate` checks the manifest schema, identifiers, source count, and safe
+relative references. It does not read source files, confirm that they exist, or
+perform a dry-run build. `build` ingests the files, extracts eligible claims,
+normalizes conservative identities, classifies relations, records disputes and
+gaps, and compiles the output tree.
 
-## 💖 Original project and creator
+The built-in extractor considers Markdown-style bullets, numbered items, and
+paragraphs beginning with `Claim:` or `Assertion:`. It ignores ordinary prose
+and is not a general natural-language or citation extractor.
 
-<img align="right" width="150" src="docs/assets/booklin-celebrating.png" alt="Booklin celebrating">
+Selected output paths include:
 
-This independently maintained repository builds on the original MIT-licensed
-`book-to-skill` project created by
-[Virgilio Junior](https://github.com/virgiliojr94). If the original foundation
-is useful to you, consider supporting its creator.
+```text
+corpus-build/
+├── artifacts/
+│   ├── extracted/
+│   ├── source-records.jsonl
+│   ├── source-claims.jsonl
+│   ├── canonical-claims.jsonl
+│   ├── relations.jsonl
+│   ├── claim-graph.json
+│   ├── synthesis.json
+│   └── runs.jsonl
+└── skill/<corpus-slug>/
+    ├── SKILL.md
+    ├── chapters/
+    ├── glossary.md
+    ├── patterns.md
+    ├── cheatsheet.md
+    ├── source-registry.json
+    ├── traceability.json
+    └── build-manifest.json
+```
 
-**[Support the original creator → github.com/sponsors/virgiliojr94](https://github.com/sponsors/virgiliojr94)**
+The output also contains cache, checkpoint, and build-state records. See the
+complete [corpus workflow](docs/CORPUS_WORKFLOW.md) for the manifest and output
+contracts.
 
-The original project acknowledgements are preserved in [BACKERS.md](BACKERS.md).
+## What the corpus path records
 
-## License
+- **Source traceability:** Rendered assertions resolve through canonical and
+  source claim IDs to checksum-verified character offsets in sanitized extracted
+  text. This does not cover ignored prose, raw-byte positions, or external
+  citations.
+- **Qualified synthesis:** Claims begin unreviewed with heuristic confidence.
+  Rules preserve conditional disagreement and gaps; they do not fact-check,
+  rank sources, or choose the correct position. The CLI withholds
+  consensus/minority inference because it has no source-independence groups.
+- **Reproducible structure:** Stable IDs, canonical ordering, cache reuse, and
+  generated-content checksums support reproducible unchanged reruns. Timestamps,
+  run ledgers, and cache state can still change between runs.
+- **Local execution:** Normal built-in corpus builds make zero model calls and
+  require no service credentials. This statement does not apply to the
+  host-agent document workflow or to installation.
+- **Defense in depth:** Ingestion removes known invisible Unicode controls and
+  quarantines prompt-shaped claims before rendered synthesis. This is not a
+  complete prompt-injection, content-security, or malware scanner.
+- **Sensitive output:** Extracted text, source-faithful claims,
+  metadata, and excerpts remain in the build artifacts. Secure the output and
+  do not share it unless the underlying rights and sensitivity allow that use.
 
-MIT — applies to the converter (code + skill definition) in this repository, **not** to any book or document you process with it.
+## Maturity and boundaries
 
-## Star History
+| Status | Current boundary |
+|---|---|
+| **Stable within defined contracts** | Protected extractor and Python API behavior; the host-agent workflow specification; the record core; and `corpus-to-skill` only within its bounded text/Markdown MVP contract |
+| **Experimental** | Versioned evaluation APIs and prospective prediction, caller-supplied outcome, scoring, and aggregation APIs; these are not run by `corpus-to-skill build` |
+| **Scaffolded** | Domain/model adapter seams, rich-document and authorized-URI corpus adapters, outcome resolution, review/override UI, downstream-stage caching, migration CLI, live providers and benchmarks, and separate `claim_framework` publication |
+| **Planned** | General remote ingestion, exact-offset rich-document corpus support, and automatic domain-profile execution remain possible future work without a release commitment |
 
-<a href="https://www.star-history.com/?repos=nicholasswhite%2Fbook-to-skill&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=nicholasswhite/book-to-skill&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=nicholasswhite/book-to-skill&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=nicholasswhite/book-to-skill&type=date&legend=top-left" />
- </picture>
-</a>
+Current limitations and non-goals:
+
+- The rich-format extractor and the compiler with checksum-verified
+  sanitized-text offsets are separate paths. PDF, EPUB, DOCX, HTML, RTF,
+  MOBI/AZW, and URIs are not corpus inputs.
+- A corpus build needs at least two successfully ingested sources and at least
+  two sources that yield eligible claims.
+- `configuration_ref` participates in build identity and cache invalidation; it
+  is not loaded as a configuration file. `domain_profile` is retained as
+  metadata but does not select an executable adapter.
+- The compiler has no review UI or override-ledger import. Heuristic relation
+  labels require human review for consequential use.
+- Evaluation and prediction are separate APIs, not build stages. The project
+  claims no historical accuracy, calibration, predictive power, universal
+  evidence score, or truth score.
+- Book to Skill is not a truth engine, RAG system, autonomous researcher, or a
+  guarantee that generated material is correct or safe to redistribute.
+
+## Development
+
+Install the development tools, then run the verified offline checks:
+
+```bash
+python -m pip install pytest ruff
+python -m pytest -q
+python -m ruff check .
+python -m examples.non_book_claims
+```
+
+The normal test suite keeps live and performance tests behind explicit opt-in
+gates. Read [`docs/FRAMEWORK_STATUS.md`](docs/FRAMEWORK_STATUS.md) before adding
+or authorizing either category. Contribution guidance is in
+[`CONTRIBUTING.md`](CONTRIBUTING.md), and security reporting instructions are in
+[`SECURITY.md`](SECURITY.md).
+
+## Lineage and license
+
+This repository began as a derivative of [Virgilio Junior's original
+`book-to-skill`](https://github.com/virgiliojr94/book-to-skill) project. It
+retains the relevant upstream Git history and is now independently maintained.
+The established `/book-to-skill` workflow and extraction engine come from that
+lineage; this repository adds a separately scoped corpus and claim-framework
+direction. It is not maintained by or affiliated with the original project, and
+no sponsorship, endorsement, partnership, or continuing affiliation is implied.
+
+The software remains available under the [MIT License](LICENSE.md), including
+the inherited original notice:
+
+```text
+Copyright (c) 2025 virgiliojr94
+```
+
+The software license does not determine whether you may process or redistribute
+third-party source material. You are responsible for the rights, access rules,
+and retention requirements that apply to your inputs and generated artifacts.
